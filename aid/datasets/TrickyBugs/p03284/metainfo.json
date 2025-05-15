@@ -1,0 +1,15 @@
+{
+    "pid": "p03284",
+    "URL": "https://atcoder.jp/contests/abc105/tasks/abc105_a",
+    "difficulty": "unknown",
+    "test_program_mapping": {
+        "test.in": [
+            "sol_153.cpp",
+            "sol_124.py",
+            "sol_152.py",
+            "sol_25.py",
+            "sol_94.py",
+            "sol_108.java"
+        ]
+    }
+}

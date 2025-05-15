@@ -1,0 +1,10 @@
+{
+    "pid": "p02736",
+    "URL": "https://atcoder.jp/contests/agc043/tasks/agc043_b",
+    "difficulty": 1945,
+    "test_program_mapping": {
+        "test84.in": [
+            "sol_74.py"
+        ]
+    }
+}

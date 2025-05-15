@@ -1,0 +1,11 @@
+{
+    "pid": "p03264",
+    "URL": "https://atcoder.jp/contests/abc108/tasks/abc108_a",
+    "difficulty": 25,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_123.py",
+            "sol_172.java"
+        ]
+    }
+}

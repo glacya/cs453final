@@ -1,0 +1,23 @@
+{
+    "pid": "p03475",
+    "URL": "https://atcoder.jp/contests/abc084/tasks/abc084_c",
+    "difficulty": 908,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_119.cpp",
+            "sol_168.cpp",
+            "sol_105.py",
+            "sol_192.py",
+            "sol_83.py",
+            "sol_97.py"
+        ],
+        "test1.in": [
+            "sol_119.cpp",
+            "sol_168.cpp",
+            "sol_105.py",
+            "sol_192.py",
+            "sol_83.py",
+            "sol_97.py"
+        ]
+    }
+}

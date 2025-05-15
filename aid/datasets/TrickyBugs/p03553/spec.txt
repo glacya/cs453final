@@ -1,0 +1,48 @@
+We have N gemstones labeled 1 through N.
+You can perform the following operation any number of times (possibly zero).
+* Select a positive integer x, and smash all the gems labeled with multiples of x.
+Then, for each i, if the gem labeled i remains without getting smashed, you will receive a_i yen (the currency of Japan). However, a_i may be negative, in which case you will be charged money.
+By optimally performing the operation, how much yen can you earn?
+
+CONSTRAINTS:
+* All input values are integers.
+* 1 \leq N \leq 100
+* |a_i| \leq 10^9
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+a_1 a_2 ... a_N
+
+OUTPUT:
+Print the maximum amount of money that can be earned.
+
+EXAMPLES:
+
+INPUT:
+6
+1 2 -6 4 5 3
+
+OUTPUT:
+12
+
+INPUT:
+6
+100 -100 -100 -100 100 -100
+
+OUTPUT:
+200
+
+INPUT:
+5
+-1 -2 -3 -4 -5
+
+OUTPUT:
+0
+
+INPUT:
+2
+-1000 100000
+
+OUTPUT:
+99000

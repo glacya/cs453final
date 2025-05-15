@@ -1,0 +1,15 @@
+{
+    "pid": "p02683",
+    "URL": "https://atcoder.jp/contests/abc167/tasks/abc167_c",
+    "difficulty": 595,
+    "test_program_mapping": {
+        "test100.in": [
+            "sol_130.py"
+        ],
+        "test31.in": [
+            "sol_24.cpp",
+            "sol_80.cpp",
+            "sol_130.py"
+        ]
+    }
+}

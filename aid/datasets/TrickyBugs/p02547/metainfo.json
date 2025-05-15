@@ -1,0 +1,25 @@
+{
+    "pid": "p02547",
+    "URL": "https://atcoder.jp/contests/abc179/tasks/abc179_b",
+    "difficulty": 36,
+    "test_program_mapping": {
+        "test19.in": [
+            "sol_152.java",
+            "sol_68.java"
+        ],
+        "test32.in": [
+            "sol_31.cpp",
+            "sol_41.cpp",
+            "sol_96.cpp"
+        ],
+        "test45.in": [
+            "sol_45.java"
+        ],
+        "test66.in": [
+            "sol_96.cpp"
+        ],
+        "test67.in": [
+            "sol_30.py"
+        ]
+    }
+}

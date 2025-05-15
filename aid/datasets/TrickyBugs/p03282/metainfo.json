@@ -1,0 +1,49 @@
+{
+    "pid": "p03282",
+    "URL": "https://atcoder.jp/contests/abc106/tasks/abc106_c",
+    "difficulty": 441,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_117.cpp",
+            "sol_121.cpp",
+            "sol_161.cpp",
+            "sol_169.cpp",
+            "sol_183.cpp",
+            "sol_27.cpp",
+            "sol_43.cpp",
+            "sol_45.cpp",
+            "sol_80.cpp",
+            "sol_83.cpp",
+            "sol_84.cpp",
+            "sol_88.cpp",
+            "sol_105.py",
+            "sol_118.py",
+            "sol_121.py",
+            "sol_138.py",
+            "sol_140.py",
+            "sol_83.py",
+            "sol_87.py",
+            "sol_115.java",
+            "sol_117.java",
+            "sol_119.java",
+            "sol_134.java",
+            "sol_140.java",
+            "sol_141.java",
+            "sol_152.java",
+            "sol_156.java",
+            "sol_175.java",
+            "sol_186.java",
+            "sol_194.java",
+            "sol_32.java",
+            "sol_33.java",
+            "sol_39.java",
+            "sol_51.java",
+            "sol_56.java",
+            "sol_80.java",
+            "sol_81.java"
+        ],
+        "test1.in": [
+            "sol_149.py"
+        ]
+    }
+}

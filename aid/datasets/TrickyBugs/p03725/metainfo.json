@@ -1,0 +1,40 @@
+{
+    "pid": "p03725",
+    "URL": "https://atcoder.jp/contests/agc014/tasks/agc014_c",
+    "difficulty": 1863,
+    "test_program_mapping": {
+        "test17.in": [
+            "sol_166.cpp",
+            "sol_12.java"
+        ],
+        "test32.in": [
+            "sol_129.cpp",
+            "sol_194.cpp"
+        ],
+        "test6.in": [
+            "sol_176.cpp",
+            "sol_29.py"
+        ],
+        "test80.in": [
+            "sol_154.cpp",
+            "sol_171.cpp",
+            "sol_183.cpp",
+            "sol_188.cpp",
+            "sol_34.cpp",
+            "sol_36.cpp",
+            "sol_43.cpp",
+            "sol_5.cpp",
+            "sol_62.cpp",
+            "sol_70.cpp",
+            "sol_73.cpp",
+            "sol_85.py",
+            "sol_90.py",
+            "sol_93.py",
+            "sol_10.java",
+            "sol_17.java",
+            "sol_27.java",
+            "sol_43.java",
+            "sol_45.java"
+        ]
+    }
+}

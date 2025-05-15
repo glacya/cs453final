@@ -1,0 +1,26 @@
+{
+    "pid": "p03679",
+    "URL": "https://atcoder.jp/contests/abc065/tasks/abc065_a",
+    "difficulty": 146,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_106.cpp",
+            "sol_127.cpp",
+            "sol_138.py",
+            "sol_166.py",
+            "sol_196.py",
+            "sol_160.java",
+            "sol_81.java"
+        ],
+        "test13.in": [
+            "sol_106.cpp",
+            "sol_127.cpp",
+            "sol_91.cpp",
+            "sol_138.py",
+            "sol_166.py",
+            "sol_196.py",
+            "sol_160.java",
+            "sol_81.java"
+        ]
+    }
+}

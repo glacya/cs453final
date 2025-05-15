@@ -1,0 +1,72 @@
+{
+    "pid": "p02761",
+    "URL": "https://atcoder.jp/contests/abc157/tasks/abc157_c",
+    "difficulty": 456,
+    "test_program_mapping": {
+        "test100.in": [
+            "sol_9.py"
+        ],
+        "test47.in": [
+            "sol_33.cpp",
+            "sol_92.cpp"
+        ],
+        "test53.in": [
+            "sol_98.java"
+        ],
+        "test85.in": [
+            "sol_110.cpp",
+            "sol_119.cpp",
+            "sol_12.cpp",
+            "sol_124.cpp",
+            "sol_133.cpp",
+            "sol_137.cpp",
+            "sol_138.cpp",
+            "sol_139.cpp",
+            "sol_14.cpp",
+            "sol_148.cpp",
+            "sol_154.cpp",
+            "sol_157.cpp",
+            "sol_160.cpp",
+            "sol_168.cpp",
+            "sol_169.cpp",
+            "sol_173.cpp",
+            "sol_180.cpp",
+            "sol_181.cpp",
+            "sol_186.cpp",
+            "sol_189.cpp",
+            "sol_20.cpp",
+            "sol_3.cpp",
+            "sol_32.cpp",
+            "sol_4.cpp",
+            "sol_42.cpp",
+            "sol_51.cpp",
+            "sol_64.cpp",
+            "sol_67.cpp",
+            "sol_74.cpp",
+            "sol_77.cpp",
+            "sol_79.cpp",
+            "sol_130.py",
+            "sol_159.py",
+            "sol_163.py",
+            "sol_169.py",
+            "sol_199.py",
+            "sol_37.py",
+            "sol_11.java",
+            "sol_113.java",
+            "sol_13.java",
+            "sol_138.java",
+            "sol_14.java",
+            "sol_155.java",
+            "sol_158.java",
+            "sol_173.java",
+            "sol_185.java",
+            "sol_186.java",
+            "sol_31.java",
+            "sol_46.java",
+            "sol_57.java",
+            "sol_59.java",
+            "sol_62.java",
+            "sol_98.java"
+        ]
+    }
+}

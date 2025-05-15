@@ -1,0 +1,14 @@
+{
+    "pid": "p02626",
+    "URL": "https://atcoder.jp/contests/abc172/tasks/abc172_f",
+    "difficulty": 2216,
+    "test_program_mapping": {
+        "test10.in": [
+            "sol_106.py"
+        ],
+        "test11.in": [
+            "sol_176.cpp",
+            "sol_106.py"
+        ]
+    }
+}

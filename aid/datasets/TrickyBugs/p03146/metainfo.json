@@ -1,0 +1,11 @@
+{
+    "pid": "p03146",
+    "URL": "https://atcoder.jp/contests/abc116/tasks/abc116_b",
+    "difficulty": 128,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_163.cpp",
+            "sol_187.py"
+        ]
+    }
+}

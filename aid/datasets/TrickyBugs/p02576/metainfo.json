@@ -1,0 +1,10 @@
+{
+    "pid": "p02576",
+    "URL": "https://atcoder.jp/contests/abc176/tasks/abc176_a",
+    "difficulty": 17,
+    "test_program_mapping": {
+        "test14.in": [
+            "sol_2.py"
+        ]
+    }
+}

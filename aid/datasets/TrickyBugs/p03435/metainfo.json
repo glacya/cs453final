@@ -1,0 +1,25 @@
+{
+    "pid": "p03435",
+    "URL": "https://atcoder.jp/contests/abc088/tasks/abc088_c",
+    "difficulty": 477,
+    "test_program_mapping": {
+        "test20.in": [
+            "sol_170.java"
+        ],
+        "test22.in": [
+            "sol_156.cpp",
+            "sol_170.java"
+        ],
+        "test27.in": [
+            "sol_63.java"
+        ],
+        "test36.in": [
+            "sol_188.cpp",
+            "sol_63.java"
+        ],
+        "test87.in": [
+            "sol_104.py",
+            "sol_170.java"
+        ]
+    }
+}

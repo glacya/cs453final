@@ -1,0 +1,13 @@
+{
+    "pid": "p03558",
+    "URL": "https://atcoder.jp/contests/arc084/tasks/arc084_b",
+    "difficulty": 2457,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_163.cpp"
+        ],
+        "test62.in": [
+            "sol_5.py"
+        ]
+    }
+}

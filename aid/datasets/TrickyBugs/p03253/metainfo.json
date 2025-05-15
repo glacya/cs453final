@@ -1,0 +1,19 @@
+{
+    "pid": "p03253",
+    "URL": "https://atcoder.jp/contests/abc110/tasks/abc110_d",
+    "difficulty": 1695,
+    "test_program_mapping": {
+        "test12.in": [
+            "sol_54.cpp",
+            "sol_90.java"
+        ],
+        "test14.in": [
+            "sol_154.cpp",
+            "sol_70.java",
+            "sol_76.java"
+        ],
+        "test19.in": [
+            "sol_179.py"
+        ]
+    }
+}

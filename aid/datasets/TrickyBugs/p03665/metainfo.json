@@ -1,0 +1,23 @@
+{
+    "pid": "p03665",
+    "URL": "https://atcoder.jp/contests/agc017/tasks/agc017_a",
+    "difficulty": 815,
+    "test_program_mapping": {
+        "test42.in": [
+            "sol_175.cpp"
+        ],
+        "test86.in": [
+            "sol_128.cpp",
+            "sol_175.cpp",
+            "sol_38.cpp",
+            "sol_4.cpp",
+            "sol_155.py",
+            "sol_52.py",
+            "sol_96.java",
+            "sol_97.java"
+        ],
+        "test95.in": [
+            "sol_9.java"
+        ]
+    }
+}

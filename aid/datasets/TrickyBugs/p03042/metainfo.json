@@ -1,0 +1,20 @@
+{
+    "pid": "p03042",
+    "URL": "https://atcoder.jp/contests/abc126/tasks/abc126_b",
+    "difficulty": "unknown",
+    "test_program_mapping": {
+        "test35.in": [
+            "sol_144.py"
+        ],
+        "test4.in": [
+            "sol_57.java"
+        ],
+        "test8.in": [
+            "sol_180.cpp",
+            "sol_186.cpp",
+            "sol_192.cpp",
+            "sol_144.py",
+            "sol_81.py"
+        ]
+    }
+}

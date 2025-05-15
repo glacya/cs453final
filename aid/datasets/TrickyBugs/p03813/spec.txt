@@ -1,0 +1,27 @@
+Smeke has decided to participate in AtCoder Beginner Contest (ABC) if his current rating is less than 1200, and participate in AtCoder Regular Contest (ARC) otherwise.
+You are given Smeke's current rating, x. Print `ABC` if Smeke will participate in ABC, and print `ARC` otherwise.
+
+CONSTRAINTS:
+* 1 ≦ x ≦ 3{,}000
+* x is an integer.
+
+INPUT:
+The input is given from Standard Input in the following format:
+x
+
+OUTPUT:
+Print the answer.
+
+EXAMPLES:
+
+INPUT:
+1000
+
+OUTPUT:
+ABC
+
+INPUT:
+2000
+
+OUTPUT:
+ARC

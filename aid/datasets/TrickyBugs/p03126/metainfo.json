@@ -1,0 +1,14 @@
+{
+    "pid": "p03126",
+    "URL": "https://atcoder.jp/contests/abc118/tasks/abc118_b",
+    "difficulty": 148,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_191.py"
+        ],
+        "test17.in": [
+            "sol_139.cpp",
+            "sol_20.cpp"
+        ]
+    }
+}

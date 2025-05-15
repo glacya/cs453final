@@ -1,0 +1,12 @@
+{
+    "pid": "p02587",
+    "URL": "https://atcoder.jp/contests/abc175/tasks/abc175_f",
+    "difficulty": 2512,
+    "test_program_mapping": {
+        "test11.in": [
+            "sol_1.py",
+            "sol_15.py",
+            "sol_8.py"
+        ]
+    }
+}

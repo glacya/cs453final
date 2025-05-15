@@ -1,0 +1,63 @@
+{
+    "pid": "p03285",
+    "URL": "https://atcoder.jp/contests/abc105/tasks/abc105_b",
+    "difficulty": "unknown",
+    "test_program_mapping": {
+        "test.in": [
+            "sol_11.cpp",
+            "sol_2.cpp",
+            "sol_163.py",
+            "sol_74.py",
+            "sol_136.java",
+            "sol_141.java",
+            "sol_182.java"
+        ],
+        "test10.in": [
+            "sol_11.cpp",
+            "sol_2.cpp",
+            "sol_163.py",
+            "sol_172.py",
+            "sol_74.py",
+            "sol_136.java",
+            "sol_141.java",
+            "sol_182.java",
+            "sol_68.java"
+        ],
+        "test11.in": [
+            "sol_11.cpp",
+            "sol_134.cpp",
+            "sol_150.cpp",
+            "sol_163.cpp",
+            "sol_2.cpp",
+            "sol_67.cpp",
+            "sol_163.py",
+            "sol_74.py",
+            "sol_136.java",
+            "sol_141.java",
+            "sol_182.java",
+            "sol_68.java"
+        ],
+        "test16.in": [
+            "sol_182.cpp"
+        ],
+        "test26.in": [
+            "sol_163.py",
+            "sol_30.py",
+            "sol_68.java"
+        ],
+        "test55.in": [
+            "sol_165.cpp"
+        ],
+        "test97.in": [
+            "sol_165.cpp",
+            "sol_63.cpp",
+            "sol_163.py",
+            "sol_68.java"
+        ],
+        "test98.in": [
+            "sol_117.cpp",
+            "sol_182.cpp",
+            "sol_74.py"
+        ]
+    }
+}

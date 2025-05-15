@@ -1,0 +1,10 @@
+{
+    "pid": "p03743",
+    "URL": "https://atcoder.jp/contests/arc072/tasks/arc072_c",
+    "difficulty": 2655,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_8.py"
+        ]
+    }
+}

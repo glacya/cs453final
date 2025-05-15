@@ -1,0 +1,46 @@
+{
+    "pid": "p03112",
+    "URL": "https://atcoder.jp/contests/abc119/tasks/abc119_d",
+    "difficulty": 1346,
+    "test_program_mapping": {
+        "test100.in": [
+            "sol_1.java",
+            "sol_127.java",
+            "sol_167.java",
+            "sol_20.java",
+            "sol_27.java"
+        ],
+        "test17.in": [
+            "sol_127.java",
+            "sol_4.java"
+        ],
+        "test19.in": [
+            "sol_114.cpp",
+            "sol_158.py",
+            "sol_1.java",
+            "sol_105.java",
+            "sol_117.java",
+            "sol_119.java",
+            "sol_123.java",
+            "sol_127.java",
+            "sol_167.java",
+            "sol_170.java",
+            "sol_184.java",
+            "sol_2.java",
+            "sol_20.java",
+            "sol_27.java",
+            "sol_34.java",
+            "sol_4.java",
+            "sol_60.java",
+            "sol_76.java",
+            "sol_79.java",
+            "sol_94.java"
+        ],
+        "test27.in": [
+            "sol_127.java",
+            "sol_184.java",
+            "sol_4.java",
+            "sol_47.java"
+        ]
+    }
+}

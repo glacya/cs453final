@@ -1,0 +1,41 @@
+Given are positive integers A and B.
+Let us choose some number of positive common divisors of A and B.
+Here, any two of the chosen divisors must be coprime.
+At most, how many divisors can we choose?
+Definition of common divisor
+An integer d is said to be a common divisor of integers x and y when d divides both x and y.
+Definition of being coprime
+Integers x and y are said to be coprime when x and y have no positive common divisors other than 1.
+Definition of dividing
+An integer x is said to divide another integer y when there exists an integer \alpha such that y = \alpha x.
+
+CONSTRAINTS:
+* All values in input are integers.
+* 1 \leq A, B \leq 10^{12}
+
+INPUT:
+Input is given from Standard Input in the following format:
+A B
+
+OUTPUT:
+Print the maximum number of divisors that can be chosen to satisfy the condition.
+
+EXAMPLES:
+
+INPUT:
+12 18
+
+OUTPUT:
+3
+
+INPUT:
+420 660
+
+OUTPUT:
+4
+
+INPUT:
+1 2019
+
+OUTPUT:
+1

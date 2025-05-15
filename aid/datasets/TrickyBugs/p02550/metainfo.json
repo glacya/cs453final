@@ -1,0 +1,12 @@
+{
+    "pid": "p02550",
+    "URL": "https://atcoder.jp/contests/abc179/tasks/abc179_e",
+    "difficulty": 1175,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_129.cpp",
+            "sol_29.py",
+            "sol_37.py"
+        ]
+    }
+}

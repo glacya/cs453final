@@ -1,0 +1,14 @@
+{
+    "pid": "p02811",
+    "URL": "https://atcoder.jp/contests/abc150/tasks/abc150_a",
+    "difficulty": "unknown",
+    "test_program_mapping": {
+        "test.in": [
+            "sol_29.py",
+            "sol_65.py"
+        ],
+        "test10.in": [
+            "sol_28.py"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "pid": "p03011",
+    "URL": "https://atcoder.jp/contests/abc129/tasks/abc129_a",
+    "difficulty": 24,
+    "test_program_mapping": {
+        "test11.in": [
+            "sol_118.py",
+            "sol_128.py",
+            "sol_135.py",
+            "sol_152.py",
+            "sol_34.py",
+            "sol_67.py",
+            "sol_83.py",
+            "sol_92.py"
+        ]
+    }
+}

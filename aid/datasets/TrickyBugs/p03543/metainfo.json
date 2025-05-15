@@ -1,0 +1,18 @@
+{
+    "pid": "p03543",
+    "URL": "https://atcoder.jp/contests/abc079/tasks/abc079_a",
+    "difficulty": 102,
+    "test_program_mapping": {
+        "test14.in": [
+            "sol_44.cpp",
+            "sol_182.java",
+            "sol_81.java"
+        ],
+        "test20.in": [
+            "sol_171.py"
+        ],
+        "test44.in": [
+            "sol_78.cpp"
+        ]
+    }
+}

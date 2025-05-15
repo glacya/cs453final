@@ -1,0 +1,17 @@
+{
+    "pid": "p03846",
+    "URL": "https://atcoder.jp/contests/arc066/tasks/arc066_a",
+    "difficulty": 952,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_167.py",
+            "sol_107.java"
+        ],
+        "test10.in": [
+            "sol_145.cpp",
+            "sol_14.py",
+            "sol_35.py",
+            "sol_32.java"
+        ]
+    }
+}

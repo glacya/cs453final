@@ -1,0 +1,13 @@
+{
+    "pid": "p03209",
+    "URL": "https://atcoder.jp/contests/abc115/tasks/abc115_d",
+    "difficulty": 1088,
+    "test_program_mapping": {
+        "test13.in": [
+            "sol_122.py",
+            "sol_127.py",
+            "sol_18.py",
+            "sol_126.java"
+        ]
+    }
+}

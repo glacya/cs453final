@@ -1,0 +1,47 @@
+Your friend gave you a dequeue D as a birthday present.
+D is a horizontal cylinder that contains a row of N jewels.
+The values of the jewels are V_1, V_2, ..., V_N from left to right. There may be jewels with negative values.
+In the beginning, you have no jewel in your hands.
+You can perform at most K operations on D, chosen from the following, at most K times (possibly zero):
+* Operation A: Take out the leftmost jewel contained in D and have it in your hand. You cannot do this operation when D is empty.
+* Operation B: Take out the rightmost jewel contained in D and have it in your hand. You cannot do this operation when D is empty.
+* Operation C: Choose a jewel in your hands and insert it to the left end of D. You cannot do this operation when you have no jewel in your hand.
+* Operation D: Choose a jewel in your hands and insert it to the right end of D. You cannot do this operation when you have no jewel in your hand.
+Find the maximum possible sum of the values of jewels in your hands after the operations.
+
+CONSTRAINTS:
+* All values in input are integers.
+* 1 \leq N \leq 50
+* 1 \leq K \leq 100
+* -10^7 \leq V_i \leq 10^7
+
+INPUT:
+Input is given from Standard Input in the following format:
+N K
+V_1 V_2 ... V_N
+
+OUTPUT:
+Print the maximum possible sum of the values of jewels in your hands after the operations.
+
+EXAMPLES:
+
+INPUT:
+6 4
+-10 8 2 1 2 6
+
+OUTPUT:
+14
+
+INPUT:
+6 4
+-6 -100 50 -2 -5 -3
+
+OUTPUT:
+44
+
+INPUT:
+6 3
+-6 -100 50 -2 -5 -3
+
+OUTPUT:
+0

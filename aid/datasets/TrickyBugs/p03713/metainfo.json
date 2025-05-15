@@ -1,0 +1,36 @@
+{
+    "pid": "p03713",
+    "URL": "https://atcoder.jp/contests/arc074/tasks/arc074_a",
+    "difficulty": 1223,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_55.py"
+        ],
+        "test10.in": [
+            "sol_66.py",
+            "sol_41.java"
+        ],
+        "test19.in": [
+            "sol_24.java"
+        ],
+        "test39.in": [
+            "sol_67.cpp",
+            "sol_91.cpp",
+            "sol_104.py"
+        ],
+        "test80.in": [
+            "sol_67.cpp",
+            "sol_91.cpp",
+            "sol_104.py",
+            "sol_197.py",
+            "sol_57.py"
+        ],
+        "test96.in": [
+            "sol_67.cpp",
+            "sol_91.cpp",
+            "sol_104.py",
+            "sol_121.py",
+            "sol_80.py"
+        ]
+    }
+}

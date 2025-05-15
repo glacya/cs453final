@@ -1,0 +1,55 @@
+{
+    "pid": "p03032",
+    "URL": "https://atcoder.jp/contests/abc128/tasks/abc128_d",
+    "difficulty": 1354,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_75.cpp",
+            "sol_163.java",
+            "sol_98.java"
+        ],
+        "test100.in": [
+            "sol_75.cpp",
+            "sol_113.java"
+        ],
+        "test18.in": [
+            "sol_4.cpp",
+            "sol_75.cpp"
+        ],
+        "test29.in": [
+            "sol_125.cpp",
+            "sol_33.cpp",
+            "sol_102.py",
+            "sol_123.py",
+            "sol_192.py",
+            "sol_40.py",
+            "sol_45.py",
+            "sol_65.py",
+            "sol_72.py",
+            "sol_80.py",
+            "sol_103.java",
+            "sol_161.java",
+            "sol_44.java",
+            "sol_92.java"
+        ],
+        "test32.in": [
+            "sol_103.py",
+            "sol_192.py",
+            "sol_40.py",
+            "sol_45.py",
+            "sol_49.py",
+            "sol_58.py",
+            "sol_65.py",
+            "sol_72.py",
+            "sol_80.py",
+            "sol_90.py",
+            "sol_142.java"
+        ],
+        "test40.in": [
+            "sol_4.cpp",
+            "sol_69.cpp",
+            "sol_163.java",
+            "sol_98.java"
+        ]
+    }
+}

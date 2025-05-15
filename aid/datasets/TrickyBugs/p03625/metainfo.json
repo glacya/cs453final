@@ -1,0 +1,33 @@
+{
+    "pid": "p03625",
+    "URL": "https://atcoder.jp/contests/arc081/tasks/arc081_a",
+    "difficulty": 589,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_127.cpp"
+        ],
+        "test10.in": [
+            "sol_106.cpp",
+            "sol_127.cpp",
+            "sol_128.cpp",
+            "sol_17.cpp",
+            "sol_179.cpp",
+            "sol_40.cpp",
+            "sol_59.cpp",
+            "sol_76.cpp",
+            "sol_120.py",
+            "sol_127.py",
+            "sol_166.py",
+            "sol_175.py",
+            "sol_191.py",
+            "sol_197.py",
+            "sol_26.py",
+            "sol_29.py",
+            "sol_31.py",
+            "sol_65.py",
+            "sol_158.java",
+            "sol_44.java",
+            "sol_47.java"
+        ]
+    }
+}
