@@ -1,9 +1,9 @@
 # Import here.
 
 from preprocess_dataset import *
-from run_programs import *
 from statistical_measure import *
 import argparse
+import json
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='AID pipeline.')
@@ -32,7 +32,9 @@ if __name__ == "__main__":
         # - Generate input generators
         # - Generate inputs
 
-        execute_programs()
-        produce_statistical_result()
+        aid_statistics = execute_programs_and_produce_statistics()
+
+        with open("aid_evaluation.txt", "w") as f:
+            json.dump(aid_statistics, f, indent=2, ensure_ascii=False)
 
         print("Done. Evaluation result is written in aid_evaluation.txt.")
