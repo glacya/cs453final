@@ -1,0 +1,33 @@
+Having learned the multiplication table, Takahashi can multiply two integers between 1 and 9 (inclusive) together.
+Given an integer N, determine whether N can be represented as the product of two integers between 1 and 9. If it can, print `Yes`; if it cannot, print `No`.
+
+CONSTRAINTS:
+* 1 \leq N \leq 100
+* N is an integer.
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+
+OUTPUT:
+If N can be represented as the product of two integers between 1 and 9 (inclusive), print `Yes`; if it cannot, print `No`.
+
+EXAMPLES:
+
+INPUT:
+10
+
+OUTPUT:
+Yes
+
+INPUT:
+50
+
+OUTPUT:
+No
+
+INPUT:
+81
+
+OUTPUT:
+Yes

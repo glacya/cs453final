@@ -1,0 +1,31 @@
+{
+    "pid": "p03323",
+    "URL": "https://atcoder.jp/contests/abc100/tasks/abc100_a",
+    "difficulty": 57,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_119.cpp",
+            "sol_12.cpp",
+            "sol_15.cpp",
+            "sol_18.cpp",
+            "sol_3.cpp",
+            "sol_45.cpp",
+            "sol_58.cpp",
+            "sol_87.cpp",
+            "sol_140.py",
+            "sol_15.py",
+            "sol_162.py",
+            "sol_5.py",
+            "sol_139.java",
+            "sol_158.java",
+            "sol_184.java",
+            "sol_190.java",
+            "sol_196.java",
+            "sol_29.java",
+            "sol_54.java"
+        ],
+        "test26.in": [
+            "sol_15.cpp"
+        ]
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "pid": "p03497",
+    "URL": "https://atcoder.jp/contests/arc086/tasks/arc086_a",
+    "difficulty": 430,
+    "test_program_mapping": {
+        "test10.in": [
+            "sol_136.cpp",
+            "sol_139.cpp",
+            "sol_185.cpp",
+            "sol_39.cpp",
+            "sol_49.cpp",
+            "sol_50.cpp",
+            "sol_6.cpp",
+            "sol_76.cpp",
+            "sol_103.py",
+            "sol_113.py",
+            "sol_116.py",
+            "sol_125.py",
+            "sol_126.py",
+            "sol_129.py",
+            "sol_133.py",
+            "sol_136.py",
+            "sol_165.py",
+            "sol_166.py",
+            "sol_172.py",
+            "sol_178.py",
+            "sol_181.py",
+            "sol_197.py",
+            "sol_198.py",
+            "sol_22.py",
+            "sol_37.py",
+            "sol_44.py",
+            "sol_46.py",
+            "sol_49.py",
+            "sol_61.py",
+            "sol_67.py",
+            "sol_7.py",
+            "sol_73.py",
+            "sol_80.py",
+            "sol_89.py"
+        ]
+    }
+}

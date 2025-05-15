@@ -1,0 +1,52 @@
+{
+    "pid": "p03078",
+    "URL": "https://atcoder.jp/contests/abc123/tasks/abc123_d",
+    "difficulty": 1489,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_111.cpp",
+            "sol_138.cpp",
+            "sol_51.cpp",
+            "sol_54.cpp",
+            "sol_4.java"
+        ],
+        "test100.in": [
+            "sol_111.cpp",
+            "sol_138.cpp",
+            "sol_51.cpp",
+            "sol_54.cpp",
+            "sol_11.java",
+            "sol_142.java",
+            "sol_4.java"
+        ],
+        "test12.in": [
+            "sol_16.cpp",
+            "sol_51.cpp",
+            "sol_112.py",
+            "sol_176.py",
+            "sol_185.py",
+            "sol_80.py",
+            "sol_138.java",
+            "sol_57.java"
+        ],
+        "test21.in": [
+            "sol_111.cpp",
+            "sol_138.cpp",
+            "sol_51.cpp",
+            "sol_54.cpp",
+            "sol_138.java",
+            "sol_156.java",
+            "sol_57.java"
+        ],
+        "test56.in": [
+            "sol_111.cpp",
+            "sol_138.cpp",
+            "sol_51.cpp",
+            "sol_54.cpp",
+            "sol_101.java",
+            "sol_156.java",
+            "sol_57.java",
+            "sol_72.java"
+        ]
+    }
+}

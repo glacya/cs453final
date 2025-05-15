@@ -1,0 +1,10 @@
+{
+    "pid": "p03297",
+    "URL": "https://atcoder.jp/contests/agc026/tasks/agc026_b",
+    "difficulty": 1720,
+    "test_program_mapping": {
+        "test26.in": [
+            "sol_197.py"
+        ]
+    }
+}

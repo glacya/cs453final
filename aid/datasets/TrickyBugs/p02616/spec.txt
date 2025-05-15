@@ -1,0 +1,45 @@
+Given are N integers A_1,\ldots,A_N.
+We will choose exactly K of these elements. Find the maximum possible product of the chosen elements.
+Then, print the maximum product modulo (10^9+7), using an integer between 0 and 10^9+6 (inclusive).
+
+CONSTRAINTS:
+* 1 \leq K \leq N \leq 2\times 10^5
+* |A_i| \leq 10^9
+
+INPUT:
+Input is given from Standard Input in the following format:
+N K
+A_1 \ldots A_N
+
+OUTPUT:
+Print the maximum product modulo (10^9+7), using an integer between 0 and 10^9+6 (inclusive).
+
+EXAMPLES:
+
+INPUT:
+4 2
+1 2 -3 -4
+
+OUTPUT:
+12
+
+INPUT:
+4 3
+-1 -2 -3 -4
+
+OUTPUT:
+1000000001
+
+INPUT:
+2 1
+-1 1000000000
+
+OUTPUT:
+1000000000
+
+INPUT:
+10 10
+1000000000 100000000 10000000 1000000 100000 10000 1000 100 10 1
+
+OUTPUT:
+999983200

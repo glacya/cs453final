@@ -1,0 +1,24 @@
+{
+    "pid": "p03272",
+    "URL": "https://atcoder.jp/contests/abc192/tasks/abc192_e",
+    "difficulty": 1135,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_151.cpp",
+            "sol_161.cpp",
+            "sol_169.cpp",
+            "sol_174.cpp",
+            "sol_109.py",
+            "sol_168.py",
+            "sol_29.py",
+            "sol_47.py",
+            "sol_88.py",
+            "sol_94.py",
+            "sol_133.java",
+            "sol_135.java",
+            "sol_140.java",
+            "sol_25.java",
+            "sol_82.java"
+        ]
+    }
+}

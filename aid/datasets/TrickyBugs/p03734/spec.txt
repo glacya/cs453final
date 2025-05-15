@@ -1,0 +1,64 @@
+You have N items and a bag of strength W. The i-th item has a weight of w_i and a value of v_i.
+You will select some of the items and put them in the bag. Here, the total weight of the selected items needs to be at most W.
+Your objective is to maximize the total value of the selected items.
+
+CONSTRAINTS:
+* 1 ≤ N ≤ 100
+* 1 ≤ W ≤ 10^9
+* 1 ≤ w_i ≤ 10^9
+* For each i = 2,3,...,N, w_1 ≤ w_i ≤ w_1 + 3.
+* 1 ≤ v_i ≤ 10^7
+* W, each w_i and v_i are integers.
+
+INPUT:
+Input is given from Standard Input in the following format:
+N W
+w_1 v_1
+w_2 v_2
+:
+w_N v_N
+
+OUTPUT:
+Print the maximum possible total value of the selected items.
+
+EXAMPLES:
+
+INPUT:
+4 6
+2 1
+3 4
+4 10
+3 4
+
+OUTPUT:
+11
+
+INPUT:
+4 6
+2 1
+3 7
+4 10
+3 6
+
+OUTPUT:
+13
+
+INPUT:
+4 10
+1 100
+1 100
+1 100
+1 100
+
+OUTPUT:
+400
+
+INPUT:
+4 1
+10 100
+10 100
+10 100
+10 100
+
+OUTPUT:
+0

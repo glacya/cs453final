@@ -1,0 +1,38 @@
+{
+    "pid": "p02703",
+    "URL": "https://atcoder.jp/contests/abc164/tasks/abc164_e",
+    "difficulty": 1877,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_175.cpp",
+            "sol_142.py",
+            "sol_64.py",
+            "sol_67.py",
+            "sol_92.py"
+        ],
+        "test1.in": [
+            "sol_175.cpp",
+            "sol_142.py",
+            "sol_64.py",
+            "sol_67.py",
+            "sol_92.py",
+            "sol_10.java"
+        ],
+        "test100.in": [
+            "sol_175.cpp",
+            "sol_68.cpp",
+            "sol_142.py",
+            "sol_64.py",
+            "sol_67.py",
+            "sol_92.py"
+        ],
+        "test16.in": [
+            "sol_128.cpp",
+            "sol_175.cpp",
+            "sol_142.py",
+            "sol_64.py",
+            "sol_67.py",
+            "sol_92.py"
+        ]
+    }
+}

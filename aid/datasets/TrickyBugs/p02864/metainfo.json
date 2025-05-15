@@ -1,0 +1,24 @@
+{
+    "pid": "p02864",
+    "URL": "https://atcoder.jp/contests/abc145/tasks/abc145_f",
+    "difficulty": 2116,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_73.py"
+        ],
+        "test13.in": [
+            "sol_31.py",
+            "sol_42.py",
+            "sol_59.py"
+        ],
+        "test21.in": [
+            "sol_118.cpp",
+            "sol_4.py"
+        ],
+        "test34.in": [
+            "sol_118.cpp",
+            "sol_185.cpp",
+            "sol_4.py"
+        ]
+    }
+}

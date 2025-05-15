@@ -1,0 +1,28 @@
+Takahashi loves takoyaki - a ball-shaped snack.
+With a takoyaki machine, he can make at most X pieces of takoyaki at a time, taking T minutes regardless of the number of pieces to make.
+How long does it take to make N takoyaki?
+
+CONSTRAINTS:
+* 1 \leq N,X,T \leq 1000
+* All values in input are integers.
+
+INPUT:
+Input is given from Standard Input in the following format:
+N X T
+
+OUTPUT:
+Print an integer representing the minimum number of minutes needed to make N pieces of takoyaki.
+
+EXAMPLES:
+
+INPUT:
+20 12 6
+
+OUTPUT:
+12
+
+INPUT:
+1000 1 1000
+
+OUTPUT:
+1000000

@@ -1,0 +1,14 @@
+{
+    "pid": "p03548",
+    "URL": "https://atcoder.jp/contests/abc078/tasks/abc078_b",
+    "difficulty": 64,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_124.py"
+        ],
+        "test15.in": [
+            "sol_124.py",
+            "sol_95.py"
+        ]
+    }
+}

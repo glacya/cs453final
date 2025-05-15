@@ -1,0 +1,27 @@
+{
+    "pid": "p03352",
+    "URL": "https://atcoder.jp/contests/abc097/tasks/abc097_b",
+    "difficulty": 247,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_139.cpp"
+        ],
+        "test100.in": [
+            "sol_139.cpp",
+            "sol_49.py",
+            "sol_194.java",
+            "sol_91.java"
+        ],
+        "test45.in": [
+            "sol_139.cpp",
+            "sol_145.cpp",
+            "sol_149.cpp",
+            "sol_30.cpp",
+            "sol_42.cpp",
+            "sol_73.cpp",
+            "sol_132.java",
+            "sol_190.java",
+            "sol_91.java"
+        ]
+    }
+}

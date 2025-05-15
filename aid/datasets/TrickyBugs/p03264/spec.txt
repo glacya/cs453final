@@ -1,0 +1,38 @@
+Find the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive). The order does not matter.
+
+CONSTRAINTS:
+* 2\leq K\leq 100
+* K is an integer.
+
+INPUT:
+Input is given from Standard Input in the following format:
+K
+
+OUTPUT:
+Print the number of ways to choose a pair of an even number and an odd number from the positive integers between 1 and K (inclusive).
+
+EXAMPLES:
+
+INPUT:
+3
+
+OUTPUT:
+2
+
+INPUT:
+6
+
+OUTPUT:
+9
+
+INPUT:
+11
+
+OUTPUT:
+30
+
+INPUT:
+50
+
+OUTPUT:
+625

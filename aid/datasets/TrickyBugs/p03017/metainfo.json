@@ -1,0 +1,75 @@
+{
+    "pid": "p03017",
+    "URL": "https://atcoder.jp/contests/agc034/tasks/agc034_a",
+    "difficulty": 662,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_133.cpp",
+            "sol_162.cpp",
+            "sol_198.cpp",
+            "sol_42.cpp",
+            "sol_43.cpp",
+            "sol_70.cpp",
+            "sol_71.cpp",
+            "sol_95.cpp",
+            "sol_96.cpp",
+            "sol_111.py",
+            "sol_116.py",
+            "sol_158.py",
+            "sol_45.py",
+            "sol_82.py",
+            "sol_55.java",
+            "sol_87.java",
+            "sol_92.java"
+        ],
+        "test1.in": [
+            "sol_151.cpp",
+            "sol_92.java"
+        ],
+        "test10.in": [
+            "sol_133.cpp",
+            "sol_151.cpp",
+            "sol_162.cpp",
+            "sol_198.cpp",
+            "sol_42.cpp",
+            "sol_43.cpp",
+            "sol_70.cpp",
+            "sol_71.cpp",
+            "sol_95.cpp",
+            "sol_96.cpp",
+            "sol_111.py",
+            "sol_116.py",
+            "sol_158.py",
+            "sol_45.py",
+            "sol_82.py",
+            "sol_44.java",
+            "sol_55.java",
+            "sol_87.java"
+        ],
+        "test100.in": [
+            "sol_151.cpp",
+            "sol_118.java",
+            "sol_92.java"
+        ],
+        "test14.in": [
+            "sol_128.cpp",
+            "sol_133.cpp",
+            "sol_162.cpp",
+            "sol_198.cpp",
+            "sol_42.cpp",
+            "sol_43.cpp",
+            "sol_70.cpp",
+            "sol_71.cpp",
+            "sol_95.cpp",
+            "sol_96.cpp",
+            "sol_111.py",
+            "sol_116.py",
+            "sol_158.py",
+            "sol_45.py",
+            "sol_82.py",
+            "sol_44.java",
+            "sol_55.java",
+            "sol_87.java"
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "pid": "p02716",
+    "URL": "https://atcoder.jp/contests/abc162/tasks/abc162_f",
+    "difficulty": 1764,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_110.cpp",
+            "sol_182.cpp",
+            "sol_40.cpp",
+            "sol_23.py",
+            "sol_80.py",
+            "sol_99.py",
+            "sol_49.java",
+            "sol_55.java"
+        ],
+        "test100.in": [
+            "sol_144.py",
+            "sol_23.py",
+            "sol_80.py",
+            "sol_99.py"
+        ],
+        "test58.in": [
+            "sol_27.cpp",
+            "sol_63.cpp",
+            "sol_173.py",
+            "sol_183.py",
+            "sol_87.py",
+            "sol_96.py",
+            "sol_11.java",
+            "sol_23.java",
+            "sol_46.java",
+            "sol_57.java",
+            "sol_69.java"
+        ],
+        "test73.in": [
+            "sol_126.cpp",
+            "sol_63.cpp",
+            "sol_173.py",
+            "sol_183.py",
+            "sol_87.py",
+            "sol_96.py",
+            "sol_11.java",
+            "sol_23.java",
+            "sol_32.java",
+            "sol_46.java",
+            "sol_57.java",
+            "sol_69.java"
+        ]
+    }
+}

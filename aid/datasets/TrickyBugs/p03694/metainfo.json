@@ -1,0 +1,19 @@
+{
+    "pid": "p03694",
+    "URL": "https://atcoder.jp/contests/abc064/tasks/abc064_b",
+    "difficulty": 100,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_118.py",
+            "sol_166.py",
+            "sol_168.py",
+            "sol_188.py",
+            "sol_20.py",
+            "sol_46.py",
+            "sol_53.py",
+            "sol_57.py",
+            "sol_67.py",
+            "sol_89.py"
+        ]
+    }
+}

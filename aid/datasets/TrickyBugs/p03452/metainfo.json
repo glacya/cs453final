@@ -1,0 +1,29 @@
+{
+    "pid": "p03452",
+    "URL": "https://atcoder.jp/contests/arc090/tasks/arc090_b",
+    "difficulty": 1452,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_104.py"
+        ],
+        "test12.in": [
+            "sol_48.py"
+        ],
+        "test18.in": [
+            "sol_117.cpp",
+            "sol_126.cpp",
+            "sol_159.cpp",
+            "sol_23.cpp",
+            "sol_58.cpp",
+            "sol_128.py",
+            "sol_48.py",
+            "sol_17.java",
+            "sol_19.java",
+            "sol_22.java",
+            "sol_23.java",
+            "sol_36.java",
+            "sol_5.java",
+            "sol_61.java"
+        ]
+    }
+}

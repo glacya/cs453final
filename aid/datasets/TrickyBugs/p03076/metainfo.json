@@ -1,0 +1,34 @@
+{
+    "pid": "p03076",
+    "URL": "https://atcoder.jp/contests/abc123/tasks/abc123_b",
+    "difficulty": 148,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_140.cpp"
+        ],
+        "test1.in": [
+            "sol_140.cpp",
+            "sol_172.java",
+            "sol_22.java"
+        ],
+        "test100.in": [
+            "sol_140.cpp",
+            "sol_195.py",
+            "sol_110.java",
+            "sol_127.java",
+            "sol_139.java",
+            "sol_172.java",
+            "sol_22.java",
+            "sol_60.java",
+            "sol_9.java"
+        ],
+        "test13.in": [
+            "sol_140.cpp",
+            "sol_152.java"
+        ],
+        "test22.in": [
+            "sol_140.cpp",
+            "sol_87.java"
+        ]
+    }
+}

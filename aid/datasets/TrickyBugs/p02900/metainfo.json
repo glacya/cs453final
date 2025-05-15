@@ -1,0 +1,18 @@
+{
+    "pid": "p02900",
+    "URL": "https://atcoder.jp/contests/abc142/tasks/abc142_d",
+    "difficulty": 827,
+    "test_program_mapping": {
+        "test18.in": [
+            "sol_112.py",
+            "sol_83.java"
+        ],
+        "test3.in": [
+            "sol_32.cpp",
+            "sol_112.py",
+            "sol_138.py",
+            "sol_141.py",
+            "sol_199.java"
+        ]
+    }
+}

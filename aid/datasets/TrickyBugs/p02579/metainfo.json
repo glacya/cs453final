@@ -1,0 +1,14 @@
+{
+    "pid": "p02579",
+    "URL": "https://atcoder.jp/contests/abc176/tasks/abc176_d",
+    "difficulty": 1248,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_157.java"
+        ],
+        "test36.in": [
+            "sol_67.py",
+            "sol_157.java"
+        ]
+    }
+}

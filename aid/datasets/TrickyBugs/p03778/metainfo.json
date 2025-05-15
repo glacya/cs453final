@@ -1,0 +1,36 @@
+{
+    "pid": "p03778",
+    "URL": "https://atcoder.jp/contests/abc056/tasks/abc056_b",
+    "difficulty": 117,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_23.java"
+        ],
+        "test17.in": [
+            "sol_160.cpp",
+            "sol_25.cpp",
+            "sol_44.cpp",
+            "sol_47.cpp",
+            "sol_62.cpp",
+            "sol_70.cpp",
+            "sol_10.py",
+            "sol_145.py",
+            "sol_56.py",
+            "sol_114.java",
+            "sol_23.java"
+        ],
+        "test21.in": [
+            "sol_160.cpp",
+            "sol_25.cpp",
+            "sol_44.cpp",
+            "sol_47.cpp",
+            "sol_62.cpp",
+            "sol_70.cpp",
+            "sol_10.py",
+            "sol_145.py",
+            "sol_56.py",
+            "sol_79.py",
+            "sol_114.java"
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+Given is a string S. Let T be the concatenation of K copies of S. We can repeatedly perform the following operation: choose a character in T and replace it with a different character. Find the minimum number of operations required to satisfy the following condition: any two adjacent characters in T are different.
+
+CONSTRAINTS:
+* 1 \leq |S| \leq 100
+* S consists of lowercase English letters.
+* 1 \leq K \leq 10^9
+* K is an integer.
+
+INPUT:
+Input is given from Standard Input in the following format:
+S
+K
+
+OUTPUT:
+Print the minimum number of operations required.
+
+EXAMPLES:
+
+INPUT:
+issii
+2
+
+OUTPUT:
+4
+
+INPUT:
+qq
+81
+
+OUTPUT:
+81
+
+INPUT:
+cooooooooonteeeeeeeeeest
+999993333
+
+OUTPUT:
+8999939997

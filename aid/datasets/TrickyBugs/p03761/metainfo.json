@@ -1,0 +1,21 @@
+{
+    "pid": "p03761",
+    "URL": "https://atcoder.jp/contests/arc071/tasks/arc071_a",
+    "difficulty": 680,
+    "test_program_mapping": {
+        "test19.in": [
+            "sol_33.java"
+        ],
+        "test41.in": [
+            "sol_45.py"
+        ],
+        "test45.in": [
+            "sol_110.java",
+            "sol_119.java",
+            "sol_154.java",
+            "sol_176.java",
+            "sol_33.java",
+            "sol_62.java"
+        ]
+    }
+}

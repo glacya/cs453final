@@ -1,0 +1,32 @@
+Given is a sequence of N digits a_1a_2\ldots a_N, where each element is 1, 2, or 3. Let x_{i,j} defined as follows:
+* x_{1,j} := a_j \quad (1 \leq j \leq N)
+* x_{i,j} := | x_{i-1,j} - x_{i-1,j+1} | \quad (2 \leq i \leq N and 1 \leq j \leq N+1-i)
+Find x_{N,1}.
+
+CONSTRAINTS:
+* 2 \leq N \leq 10^6
+* a_i = 1,2,3 (1 \leq i \leq N)
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+a_1a_2\ldotsa_N
+
+OUTPUT:
+Print x_{N,1}.
+
+EXAMPLES:
+
+INPUT:
+4
+1231
+
+OUTPUT:
+1
+
+INPUT:
+10
+2311312312
+
+OUTPUT:
+0

@@ -1,0 +1,13 @@
+{
+    "pid": "p03803",
+    "URL": "https://atcoder.jp/contests/abc054/tasks/abc054_a",
+    "difficulty": 103,
+    "test_program_mapping": {
+        "test13.in": [
+            "sol_131.cpp",
+            "sol_170.cpp",
+            "sol_43.py",
+            "sol_31.java"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "pid": "p04039",
+    "URL": "https://atcoder.jp/contests/arc058/tasks/arc058_a",
+    "difficulty": 1174,
+    "test_program_mapping": {
+        "test100.in": [
+            "sol_7.py"
+        ],
+        "test12.in": [
+            "sol_100.py",
+            "sol_40.py"
+        ],
+        "test17.in": [
+            "sol_121.py"
+        ]
+    }
+}

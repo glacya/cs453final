@@ -1,0 +1,13 @@
+{
+    "pid": "p03705",
+    "URL": "https://atcoder.jp/contests/agc015/tasks/agc015_a",
+    "difficulty": 620,
+    "test_program_mapping": {
+        "test17.in": [
+            "sol_143.cpp",
+            "sol_146.py",
+            "sol_73.py",
+            "sol_52.java"
+        ]
+    }
+}

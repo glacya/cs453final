@@ -1,0 +1,40 @@
+{
+    "pid": "p02598",
+    "URL": "https://atcoder.jp/contests/abc174/tasks/abc174_e",
+    "difficulty": 1227,
+    "test_program_mapping": {
+        "test33.in": [
+            "sol_41.java"
+        ],
+        "test93.in": [
+            "sol_114.cpp",
+            "sol_141.cpp",
+            "sol_148.cpp",
+            "sol_168.cpp",
+            "sol_178.cpp",
+            "sol_35.cpp",
+            "sol_58.cpp",
+            "sol_6.cpp",
+            "sol_65.cpp",
+            "sol_159.py",
+            "sol_161.py",
+            "sol_165.py",
+            "sol_170.py",
+            "sol_178.py",
+            "sol_65.py",
+            "sol_109.java",
+            "sol_11.java",
+            "sol_125.java",
+            "sol_129.java",
+            "sol_23.java",
+            "sol_50.java",
+            "sol_53.java",
+            "sol_63.java",
+            "sol_83.java",
+            "sol_86.java",
+            "sol_89.java",
+            "sol_94.java",
+            "sol_98.java"
+        ]
+    }
+}

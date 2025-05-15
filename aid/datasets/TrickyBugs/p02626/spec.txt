@@ -1,0 +1,57 @@
+There are N piles of stones. The i-th pile has A_i stones.
+Aoki and Takahashi are about to use them to play the following game:
+* Starting with Aoki, the two players alternately do the following operation:
+* Operation: Choose one pile of stones, and remove one or more stones from it.
+* When a player is unable to do the operation, he loses, and the other player wins.
+When the two players play optimally, there are two possibilities in this game: the player who moves first always wins, or the player who moves second always wins, only depending on the initial number of stones in each pile.
+In such a situation, Takahashi, the second player to act, is trying to guarantee his win by moving at least zero and at most (A_1 - 1) stones from the 1-st pile to the 2-nd pile before the game begins.
+If this is possible, print the minimum number of stones to move to guarantee his victory; otherwise, print `-1` instead.
+
+CONSTRAINTS:
+* 2 \leq N \leq 300
+* 1 \leq A_i \leq 10^{12}
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+A_1 \ldots A_N
+
+OUTPUT:
+Print the minimum number of stones to move to guarantee Takahashi's win; otherwise, print `-1` instead.
+
+EXAMPLES:
+
+INPUT:
+2
+5 3
+
+OUTPUT:
+1
+
+INPUT:
+2
+3 5
+
+OUTPUT:
+-1
+
+INPUT:
+3
+1 1 2
+
+OUTPUT:
+-1
+
+INPUT:
+8
+10 9 8 7 6 5 4 3
+
+OUTPUT:
+3
+
+INPUT:
+3
+4294967297 8589934593 12884901890
+
+OUTPUT:
+1

@@ -1,0 +1,35 @@
+We have a rectangular parallelepiped of size A×B×C, built with blocks of size 1×1×1. Snuke will paint each of the A×B×C blocks either red or blue, so that:
+* There is at least one red block and at least one blue block.
+* The union of all red blocks forms a rectangular parallelepiped.
+* The union of all blue blocks forms a rectangular parallelepiped.
+Snuke wants to minimize the difference between the number of red blocks and the number of blue blocks. Find the minimum possible difference.
+
+CONSTRAINTS:
+* 2≤A,B,C≤10^9
+
+INPUT:
+The input is given from Standard Input in the following format:
+A B C
+
+OUTPUT:
+Print the minimum possible difference between the number of red blocks and the number of blue blocks.
+
+EXAMPLES:
+
+INPUT:
+3 3 3
+
+OUTPUT:
+9
+
+INPUT:
+2 2 4
+
+OUTPUT:
+0
+
+INPUT:
+5 3 5
+
+OUTPUT:
+15

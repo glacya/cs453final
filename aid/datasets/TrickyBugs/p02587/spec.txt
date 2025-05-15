@@ -1,0 +1,59 @@
+We have N strings of lowercase English letters: S_1, S_2, \cdots, S_N.
+Takahashi wants to make a string that is a palindrome by choosing one or more of these strings - the same string can be chosen more than once - and concatenating them in some order of his choice.
+The cost of using the string S_i once is C_i, and the cost of using it multiple times is C_i multiplied by that number of times.
+Find the minimum total cost needed to choose strings so that Takahashi can make a palindrome.
+If there is no choice of strings in which he can make a palindrome, print -1.
+
+CONSTRAINTS:
+* 1 \leq N \leq 50
+* 1 \leq |S_i| \leq 20
+* S_i consists of lowercase English letters.
+* 1 \leq C_i \leq 10^9
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+S_1 C_1
+S_2 C_2
+:
+S_N C_N
+
+OUTPUT:
+Print the minimum total cost needed to choose strings so that Takahashi can make a palindrome, or -1 if there is no such choice.
+
+EXAMPLES:
+
+INPUT:
+3
+ba 3
+abc 4
+cbaa 5
+
+OUTPUT:
+7
+
+INPUT:
+2
+abcab 5
+cba 3
+
+OUTPUT:
+11
+
+INPUT:
+4
+ab 5
+cba 3
+a 12
+ab 10
+
+OUTPUT:
+8
+
+INPUT:
+2
+abc 1
+ab 2
+
+OUTPUT:
+-1

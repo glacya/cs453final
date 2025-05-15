@@ -1,0 +1,20 @@
+{
+    "pid": "p02730",
+    "URL": "https://atcoder.jp/contests/abc159/tasks/abc159_b",
+    "difficulty": 92,
+    "test_program_mapping": {
+        "test3.in": [
+            "sol_123.cpp",
+            "sol_44.cpp",
+            "sol_84.cpp",
+            "sol_28.java"
+        ],
+        "test76.in": [
+            "sol_123.cpp",
+            "sol_44.cpp",
+            "sol_84.cpp",
+            "sol_121.py",
+            "sol_28.java"
+        ]
+    }
+}

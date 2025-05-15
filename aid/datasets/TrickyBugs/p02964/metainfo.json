@@ -1,0 +1,18 @@
+{
+    "pid": "p02964",
+    "URL": "https://atcoder.jp/contests/agc036/tasks/agc036_b",
+    "difficulty": 1771,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_21.py"
+        ],
+        "test66.in": [
+            "sol_119.cpp"
+        ],
+        "test67.in": [
+            "sol_116.cpp",
+            "sol_119.cpp",
+            "sol_21.py"
+        ]
+    }
+}

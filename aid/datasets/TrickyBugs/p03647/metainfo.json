@@ -1,0 +1,25 @@
+{
+    "pid": "p03647",
+    "URL": "https://atcoder.jp/contests/arc079/tasks/arc079_a",
+    "difficulty": 609,
+    "test_program_mapping": {
+        "test50.in": [
+            "sol_104.py",
+            "sol_105.py",
+            "sol_139.py"
+        ],
+        "test73.in": [
+            "sol_124.cpp"
+        ],
+        "test92.in": [
+            "sol_172.cpp",
+            "sol_104.py",
+            "sol_139.py"
+        ],
+        "test96.in": [
+            "sol_118.cpp",
+            "sol_172.cpp",
+            "sol_105.py"
+        ]
+    }
+}

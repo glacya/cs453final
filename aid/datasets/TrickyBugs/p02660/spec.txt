@@ -1,0 +1,50 @@
+Given is a positive integer N. Consider repeatedly applying the operation below on N:
+* First, choose a positive integer z satisfying all of the conditions below:
+* z can be represented as z=p^e, where p is a prime number and e is a positive integer;
+* z divides N;
+* z is different from all integers chosen in previous operations.
+* Then, replace N with N/z.
+Find the maximum number of times the operation can be applied.
+
+CONSTRAINTS:
+* All values in input are integers.
+* 1 \leq N \leq 10^{12}
+
+INPUT:
+Input is given from Standard Input in the following format:
+N
+
+OUTPUT:
+Print the maximum number of times the operation can be applied.
+
+EXAMPLES:
+
+INPUT:
+24
+
+OUTPUT:
+3
+
+INPUT:
+1
+
+OUTPUT:
+0
+
+INPUT:
+64
+
+OUTPUT:
+3
+
+INPUT:
+1000000007
+
+OUTPUT:
+1
+
+INPUT:
+997764507000
+
+OUTPUT:
+7

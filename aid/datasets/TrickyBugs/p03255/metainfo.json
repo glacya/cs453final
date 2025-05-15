@@ -1,0 +1,19 @@
+{
+    "pid": "p03255",
+    "URL": "https://atcoder.jp/contests/agc027/tasks/agc027_b",
+    "difficulty": 2631,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_112.cpp"
+        ],
+        "test11.in": [
+            "sol_149.cpp",
+            "sol_33.cpp",
+            "sol_23.py",
+            "sol_24.py",
+            "sol_25.py",
+            "sol_53.py",
+            "sol_55.py"
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "pid": "p02682",
+    "URL": "https://atcoder.jp/contests/abc167/tasks/abc167_b",
+    "difficulty": 57,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_146.cpp",
+            "sol_194.cpp",
+            "sol_34.cpp",
+            "sol_76.cpp",
+            "sol_87.cpp",
+            "sol_9.cpp",
+            "sol_93.cpp",
+            "sol_110.py",
+            "sol_119.py",
+            "sol_135.py",
+            "sol_144.py",
+            "sol_165.py",
+            "sol_168.py",
+            "sol_170.py",
+            "sol_183.py",
+            "sol_199.py",
+            "sol_29.py",
+            "sol_3.py",
+            "sol_39.py",
+            "sol_43.py",
+            "sol_46.py",
+            "sol_62.py",
+            "sol_68.py",
+            "sol_80.py",
+            "sol_90.py",
+            "sol_125.java",
+            "sol_175.java",
+            "sol_2.java",
+            "sol_40.java",
+            "sol_64.java",
+            "sol_94.java"
+        ]
+    }
+}

@@ -1,22 +1,38 @@
-from evalplus.data import get_human_eval_plus, get_human_eval_plus_hash
-from evalplus.evaluate import get_groundtruth
-import json
+# Import here.
 
+from preprocess_dataset import *
+from run_programs import *
+from statistical_measure import *
+import argparse
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='AID pipeline.')
+    parser.add_argument('-p', '--preprocess', action="store_true", help="the target file to symbolically execute")
+    args = parser.parse_args()
 
-problems = get_human_eval_plus(mini=False)
-dataset_hash = get_human_eval_plus_hash()
-expected_output = get_groundtruth(problems, dataset_hash, []) 
+    if args.preprocess:
+        print("Preprocessing dataset...")
 
-problem_num = 150
-problem_key = f"HumanEval/{problem_num}"
+        load_dotenv()
 
-with open('output.json', 'w', encoding="utf-8") as f:
-    json.dump(problems[problem_key], f, indent=2, ensure_ascii=False)
+        print("Loading data from AID dataset...")
+        load_trickybugs_data_from_aid_dataset()
 
-print(problems[problem_key]["canonical_solution"])
+        print("Loading data from TrickyBugs dataset...")
+        load_trickybugs_data_from_original_dataset()
 
-# with open('output.json', 'w', encoding='utf-8') as f:
-    # json.dump(expected_output["HumanEval/1"], f, indent=2, ensure_ascii=False)
+        print("Removing incomplete data...")
+        polish_trickybugs_problem_directory()
 
-# print(expected_output["HumanEval/0"])
+        print("Preprocessing is finished.")
+    else:
+        print("Evaluating dataset...")
+
+        # TODO: Implement the followings and add them in pipeline:
+        # - Generate input generators
+        # - Generate inputs
+
+        execute_programs()
+        produce_statistical_result()
+
+        print("Done. Evaluation result is written in aid_evaluation.txt.")

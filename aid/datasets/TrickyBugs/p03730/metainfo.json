@@ -1,0 +1,63 @@
+{
+    "pid": "p03730",
+    "URL": "https://atcoder.jp/contests/abc060/tasks/abc060_b",
+    "difficulty": 503,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_27.java"
+        ],
+        "test1.in": [
+            "sol_48.java"
+        ],
+        "test21.in": [
+            "sol_48.java",
+            "sol_7.java"
+        ],
+        "test27.in": [
+            "sol_124.cpp"
+        ],
+        "test32.in": [
+            "sol_36.py",
+            "sol_27.java"
+        ],
+        "test35.in": [
+            "sol_133.cpp",
+            "sol_134.cpp",
+            "sol_138.cpp",
+            "sol_149.cpp",
+            "sol_156.cpp",
+            "sol_61.cpp",
+            "sol_62.cpp",
+            "sol_75.cpp",
+            "sol_81.cpp",
+            "sol_112.py",
+            "sol_141.py",
+            "sol_171.py",
+            "sol_178.py",
+            "sol_181.py",
+            "sol_21.py",
+            "sol_26.py",
+            "sol_36.py",
+            "sol_66.py",
+            "sol_73.py",
+            "sol_86.py",
+            "sol_117.java",
+            "sol_125.java",
+            "sol_126.java",
+            "sol_137.java",
+            "sol_179.java",
+            "sol_186.java",
+            "sol_2.java",
+            "sol_21.java",
+            "sol_27.java",
+            "sol_48.java",
+            "sol_51.java",
+            "sol_65.java",
+            "sol_7.java",
+            "sol_89.java"
+        ],
+        "test45.in": [
+            "sol_32.java"
+        ]
+    }
+}

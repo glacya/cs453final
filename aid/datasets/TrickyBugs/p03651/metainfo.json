@@ -1,0 +1,19 @@
+{
+    "pid": "p03651",
+    "URL": "https://atcoder.jp/contests/agc018/tasks/agc018_a",
+    "difficulty": 947,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_22.py"
+        ],
+        "test1.in": [
+            "sol_22.py",
+            "sol_29.java",
+            "sol_57.java"
+        ],
+        "test100.in": [
+            "sol_22.py",
+            "sol_103.java"
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "pid": "p02660",
+    "URL": "https://atcoder.jp/contests/abc169/tasks/abc169_d",
+    "difficulty": 732,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_88.py"
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "pid": "p02787",
+    "URL": "https://atcoder.jp/contests/abc153/tasks/abc153_e",
+    "difficulty": 1015,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_95.cpp",
+            "sol_172.py",
+            "sol_117.java",
+            "sol_166.java",
+            "sol_190.java",
+            "sol_193.java",
+            "sol_36.java",
+            "sol_57.java",
+            "sol_8.java"
+        ],
+        "test11.in": [
+            "sol_145.cpp"
+        ],
+        "test12.in": [
+            "sol_145.cpp",
+            "sol_170.java"
+        ],
+        "test16.in": [
+            "sol_95.cpp",
+            "sol_172.py",
+            "sol_56.py",
+            "sol_117.java",
+            "sol_166.java",
+            "sol_190.java",
+            "sol_193.java",
+            "sol_36.java",
+            "sol_57.java",
+            "sol_8.java"
+        ]
+    }
+}

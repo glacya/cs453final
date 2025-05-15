@@ -1,0 +1,16 @@
+{
+    "pid": "p03087",
+    "URL": "https://atcoder.jp/contests/abc122/tasks/abc122_c",
+    "difficulty": 700,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_115.cpp",
+            "sol_25.cpp"
+        ],
+        "test6.in": [
+            "sol_115.cpp",
+            "sol_25.cpp",
+            "sol_186.py"
+        ]
+    }
+}

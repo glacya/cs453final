@@ -1,0 +1,34 @@
+{
+    "pid": "p03998",
+    "URL": "https://atcoder.jp/contests/abc045/tasks/abc045_b",
+    "difficulty": 635,
+    "test_program_mapping": {
+        "test.in": [
+            "sol_28.java"
+        ],
+        "test20.in": [
+            "sol_192.cpp",
+            "sol_30.cpp",
+            "sol_5.py",
+            "sol_70.py",
+            "sol_110.java",
+            "sol_116.java",
+            "sol_121.java",
+            "sol_134.java",
+            "sol_170.java",
+            "sol_173.java",
+            "sol_186.java",
+            "sol_25.java",
+            "sol_4.java",
+            "sol_78.java"
+        ],
+        "test62.in": [
+            "sol_179.cpp",
+            "sol_34.cpp"
+        ],
+        "test77.in": [
+            "sol_138.cpp",
+            "sol_198.java"
+        ]
+    }
+}

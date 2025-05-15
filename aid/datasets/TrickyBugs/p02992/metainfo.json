@@ -1,0 +1,16 @@
+{
+    "pid": "p02992",
+    "URL": "https://atcoder.jp/contests/abc132/tasks/abc132_f",
+    "difficulty": 2143,
+    "test_program_mapping": {
+        "test1.in": [
+            "sol_33.cpp",
+            "sol_87.cpp"
+        ],
+        "test34.in": [
+            "sol_33.cpp",
+            "sol_87.cpp",
+            "sol_105.py"
+        ]
+    }
+}

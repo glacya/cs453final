@@ -1,0 +1,24 @@
+{
+    "pid": "p02891",
+    "URL": "https://atcoder.jp/contests/agc039/tasks/agc039_a",
+    "difficulty": 517,
+    "test_program_mapping": {
+        "test37.in": [
+            "sol_139.cpp",
+            "sol_152.cpp",
+            "sol_0.py",
+            "sol_118.py",
+            "sol_138.py",
+            "sol_164.py",
+            "sol_2.py",
+            "sol_37.py",
+            "sol_46.py",
+            "sol_10.java",
+            "sol_108.java",
+            "sol_152.java"
+        ],
+        "test43.in": [
+            "sol_50.java"
+        ]
+    }
+}

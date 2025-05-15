@@ -1,0 +1,47 @@
+We have a long seat of width X centimeters. There are many people who wants to sit here. A person sitting on the seat will always occupy an interval of length Y centimeters.
+We would like to seat as many people as possible, but they are all very shy, and there must be a gap of length at least Z centimeters between two people, and between the end of the seat and a person.
+At most how many people can sit on the seat?
+
+CONSTRAINTS:
+* All input values are integers.
+* 1 \leq X, Y, Z \leq 10^5
+* Y+2Z \leq X
+
+INPUT:
+Input is given from Standard Input in the following format:
+X Y Z
+
+OUTPUT:
+Print the answer.
+
+EXAMPLES:
+
+INPUT:
+13 3 1
+
+OUTPUT:
+3
+
+INPUT:
+12 3 1
+
+OUTPUT:
+2
+
+INPUT:
+100000 1 1
+
+OUTPUT:
+49999
+
+INPUT:
+64146 123 456
+
+OUTPUT:
+110
+
+INPUT:
+64145 123 456
+
+OUTPUT:
+109

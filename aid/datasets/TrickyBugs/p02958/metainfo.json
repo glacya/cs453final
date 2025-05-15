@@ -1,0 +1,20 @@
+{
+    "pid": "p02958",
+    "URL": "https://atcoder.jp/contests/abc135/tasks/abc135_b",
+    "difficulty": 90,
+    "test_program_mapping": {
+        "test37.in": [
+            "sol_93.cpp"
+        ],
+        "test73.in": [
+            "sol_124.cpp",
+            "sol_176.cpp",
+            "sol_93.cpp",
+            "sol_130.py",
+            "sol_193.py",
+            "sol_61.py",
+            "sol_188.java",
+            "sol_38.java"
+        ]
+    }
+}

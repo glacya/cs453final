@@ -1,0 +1,55 @@
+{
+    "pid": "p02616",
+    "URL": "https://atcoder.jp/contests/abc173/tasks/abc173_e",
+    "difficulty": 1607,
+    "test_program_mapping": {
+        "test11.in": [
+            "sol_158.cpp",
+            "sol_102.py",
+            "sol_111.py",
+            "sol_112.py",
+            "sol_119.py",
+            "sol_133.py",
+            "sol_140.py",
+            "sol_152.py",
+            "sol_154.py",
+            "sol_159.py",
+            "sol_177.py",
+            "sol_40.py",
+            "sol_45.py",
+            "sol_46.py",
+            "sol_18.java",
+            "sol_31.java",
+            "sol_34.java",
+            "sol_85.java"
+        ],
+        "test14.in": [
+            "sol_75.java"
+        ],
+        "test15.in": [
+            "sol_4.java"
+        ],
+        "test62.in": [
+            "sol_158.cpp",
+            "sol_102.py",
+            "sol_111.py",
+            "sol_112.py",
+            "sol_119.py",
+            "sol_133.py",
+            "sol_140.py",
+            "sol_152.py",
+            "sol_154.py",
+            "sol_159.py",
+            "sol_177.py",
+            "sol_40.py",
+            "sol_45.py",
+            "sol_46.py",
+            "sol_8.py",
+            "sol_18.java",
+            "sol_31.java",
+            "sol_34.java",
+            "sol_4.java",
+            "sol_85.java"
+        ]
+    }
+}
