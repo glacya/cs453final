@@ -1,0 +1,435 @@
+[execute] p03647: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 4, in <module>
+    edges = generate_edges(n, m)
+NameError: name 'generate_edges' is not defined
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 4, in <module>
+    edges = generate_edges(n, m)
+NameError: name 'generate_edges' is not defined
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 4, in <module>
+    edges = generate_edges(n, m)
+NameError: name 'generate_edges' is not defined
+
+
+[execute] p03290: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 7, in <module>
+    io = IO.FileOutput(filename)
+AttributeError: type object 'IO' has no attribute 'FileOutput'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 7, in <module>
+    io = IO.FileOutput(filename)
+AttributeError: type object 'IO' has no attribute 'FileOutput'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 7, in <module>
+    io = IO.FileOutput(filename)
+AttributeError: type object 'IO' has no attribute 'FileOutput'
+
+
+[execute] p02787: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    io.output_to_file(f"testcase_{i}.txt")
+AttributeError: 'IO' object has no attribute 'output_to_file'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    io.output_to_file(f"testcase_{i}.txt")
+AttributeError: 'IO' object has no attribute 'output_to_file'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    io.output_to_file(f"testcase_{i}.txt")
+AttributeError: 'IO' object has no attribute 'output_to_file'
+
+
+[execute] p03452: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 10, in <module>
+    with cyaron.FileOutput(f"test_case_{test_case}.in") as out:
+AttributeError: module 'cyaron' has no attribute 'FileOutput'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 10, in <module>
+    with cyaron.FileOutput(f"test_case_{test_case}.in") as out:
+AttributeError: module 'cyaron' has no attribute 'FileOutput'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 10, in <module>
+    with cyaron.FileOutput(f"test_case_{test_case}.in") as out:
+AttributeError: module 'cyaron' has no attribute 'FileOutput'
+
+
+[execute] p02659: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 17, in <module>
+    B_str = f"{x}.{y:02d}"
+TypeError: unsupported format string passed to list.__format__
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 17, in <module>
+    B_str = f"{x}.{y:02d}"
+TypeError: unsupported format string passed to list.__format__
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 17, in <module>
+    B_str = f"{x}.{y:02d}"
+TypeError: unsupported format string passed to list.__format__
+
+
+[execute] p02579: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 32, in <module>
+    io.writeln(f"{H} {W}")
+AttributeError: 'IO' object has no attribute 'writeln'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 32, in <module>
+    io.writeln(f"{H} {W}")
+AttributeError: 'IO' object has no attribute 'writeln'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 32, in <module>
+    io.writeln(f"{H} {W}")
+AttributeError: 'IO' object has no attribute 'writeln'
+
+
+[execute] p03553: Exit 1:   File "input_gen.py", line 1
+    Test Case (a_i values for gems 1 to N):
+         ^
+SyntaxError: invalid syntax
+
+Stdout:
+
+Stderr:
+  File "input_gen.py", line 1
+    Test Case (a_i values for gems 1 to N):
+         ^
+SyntaxError: invalid syntax
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1:   File "input_gen.py", line 1
+    Test Case (a_i values for gems 1 to N):
+         ^
+SyntaxError: invalid syntax
+
+
+[execute] p03297: Exit 1:   File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+Stdout:
+
+Stderr:
+  File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1:   File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+
+[execute] p02660: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 1, in <module>
+    print(max_distinct_prime_powers(24))  # Output: 3
+NameError: name 'max_distinct_prime_powers' is not defined
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 1, in <module>
+    print(max_distinct_prime_powers(24))  # Output: 3
+NameError: name 'max_distinct_prime_powers' is not defined
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 1, in <module>
+    print(max_distinct_prime_powers(24))  # Output: 3
+NameError: name 'max_distinct_prime_powers' is not defined
+
+
+[execute] p02899: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 14, in <module>
+    io.input_int(N)
+AttributeError: 'IO' object has no attribute 'input_int'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 14, in <module>
+    io.input_int(N)
+AttributeError: 'IO' object has no attribute 'input_int'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 14, in <module>
+    io.input_int(N)
+AttributeError: 'IO' object has no attribute 'input_int'
+
+
+[execute] p03575: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    from graph_module import Graph  # Assuming this is the module with Graph.UDAG
+ModuleNotFoundError: No module named 'graph_module'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    from graph_module import Graph  # Assuming this is the module with Graph.UDAG
+ModuleNotFoundError: No module named 'graph_module'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    from graph_module import Graph  # Assuming this is the module with Graph.UDAG
+ModuleNotFoundError: No module named 'graph_module'
+
+
+[execute] p03799: Exit 1:   File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+Stdout:
+
+Stderr:
+  File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1:   File "input_gen.py", line 1
+    <think>
+    ^
+SyntaxError: invalid syntax
+
+
+[execute] p03255: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 16, in <module>
+    IO.input_writeln(f"{N} {X}")
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/io.py", line 265, in input_writeln
+    self.input_write(*args, **kwargs)
+AttributeError: 'str' object has no attribute 'input_write'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 16, in <module>
+    IO.input_writeln(f"{N} {X}")
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/io.py", line 265, in input_writeln
+    self.input_write(*args, **kwargs)
+AttributeError: 'str' object has no attribute 'input_write'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 16, in <module>
+    IO.input_writeln(f"{N} {X}")
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/io.py", line 265, in input_writeln
+    self.input_write(*args, **kwargs)
+AttributeError: 'str' object has no attribute 'input_write'
+
+
+[execute] p03651: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 13, in <module>
+    io = IO(file_prefix=path, disable_output=True)
+NameError: name 'IO' is not defined
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 13, in <module>
+    io = IO(file_prefix=path, disable_output=True)
+NameError: name 'IO' is not defined
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 13, in <module>
+    io = IO(file_prefix=path, disable_output=True)
+NameError: name 'IO' is not defined
+
+
+[execute] p03778: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 3, in <module>
+    print(minimal_distance(rect1, rect2))  # Output: 2.8284271247461903
+NameError: name 'minimal_distance' is not defined
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 3, in <module>
+    print(minimal_distance(rect1, rect2))  # Output: 2.8284271247461903
+NameError: name 'minimal_distance' is not defined
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 3, in <module>
+    print(minimal_distance(rect1, rect2))  # Output: 2.8284271247461903
+NameError: name 'minimal_distance' is not defined
+
+
+[execute] p03374: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    N, C, x_list, v_list = generate_test_case()
+NameError: name 'generate_test_case' is not defined
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    N, C, x_list, v_list = generate_test_case()
+NameError: name 'generate_test_case' is not defined
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 2, in <module>
+    N, C, x_list, v_list = generate_test_case()
+NameError: name 'generate_test_case' is not defined
+
+
+[execute] p03743: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    q_list = Vector.random(num=Q, position_range=[(1, N)], mode=0)
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/vector.py", line 70, in random
+    raise ValueError(
+ValueError: 1st param is so large that CYaRon can not generate unique vectors
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    q_list = Vector.random(num=Q, position_range=[(1, N)], mode=0)
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/vector.py", line 70, in random
+    raise ValueError(
+ValueError: 1st param is so large that CYaRon can not generate unique vectors
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    q_list = Vector.random(num=Q, position_range=[(1, N)], mode=0)
+  File "/root/oj-env/lib/python3.8/site-packages/cyaron/vector.py", line 70, in random
+    raise ValueError(
+ValueError: 1st param is so large that CYaRon can not generate unique vectors
+
+
+[execute] p03734: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    IO.output(N, W)
+AttributeError: type object 'IO' has no attribute 'output'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    IO.output(N, W)
+AttributeError: type object 'IO' has no attribute 'output'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 24, in <module>
+    IO.output(N, W)
+AttributeError: type object 'IO' has no attribute 'output'
+
+
+[execute] p03735: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 19, in <module>
+    generate_test_case()
+  File "input_gen.py", line 14, in generate_test_case
+    with IO.open("input.txt", "w") as f:
+AttributeError: type object 'IO' has no attribute 'open'
+
+Stdout:
+
+Stderr:
+Traceback (most recent call last):
+  File "input_gen.py", line 19, in <module>
+    generate_test_case()
+  File "input_gen.py", line 14, in generate_test_case
+    with IO.open("input.txt", "w") as f:
+AttributeError: type object 'IO' has no attribute 'open'
+
+Traceback (most recent call last):
+  File "create_inputs.py", line 211, in execute_code
+    raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+RuntimeError: Exit 1: Traceback (most recent call last):
+  File "input_gen.py", line 19, in <module>
+    generate_test_case()
+  File "input_gen.py", line 14, in generate_test_case
+    with IO.open("input.txt", "w") as f:
+AttributeError: type object 'IO' has no attribute 'open'
+
