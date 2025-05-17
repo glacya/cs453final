@@ -23,14 +23,21 @@ def execute_programs_and_produce_statistics() -> dict:
     base_dir = Path(__file__).resolve().parent
     dataset_dir = base_dir / "datasets/TrickyBugs"
 
+    pids_path = Path("aid/pids.txt")
+    failed_pids_path = Path("aid/failed_pids.txt")
+
     true_positive = 0
     true_negative = 0
     false_positive = 0
     false_negative = 0
 
     for problem_dir in dataset_dir.iterdir():
+        # Check if this problem should be evaluated
+        if not should_evaluate(problem_dir, dataset_dir, pids_path, failed_pids_path):
+            continue
+
         # Define paths.
-        input_dir = problem_dir / "inputs"
+        input_dir = problem_dir / "chat_generated_inputs"
         put_path = problem_dir / "put.py"
         ref_path = problem_dir / "ref"
         variant_dir = problem_dir / "variants"
@@ -49,10 +56,10 @@ def execute_programs_and_produce_statistics() -> dict:
                 ref_output_path = output_dir / f"{input_name}.ref.out"
 
                 # Run PUT.
-                subprocess.run(f"python {put_path} < {input_path} > {put_output_path}")
+                subprocess.run(f"python {put_path} < {input_path} > {put_output_path}", shell=True)
 
                 # Run reference program.
-                subprocess.run(f"python {ref_path} < {input_path} > {ref_output_path}")
+                subprocess.run(f"{ref_path} < {input_path} > {ref_output_path}", shell=True)
 
                 # Run variants.
                 variant_output_paths = []
@@ -61,7 +68,7 @@ def execute_programs_and_produce_statistics() -> dict:
                     var_name = variant_path.stem
 
                     variant_output_path = output_dir / f"{input_name}.{var_name}.out"
-                    subprocess.run(f"python {ref_path} < {input_path} < {variant_output_path}")
+                    subprocess.run(f"{ref_path} < {input_path} < {variant_output_path}", shell=True)
 
                     variant_output_paths.append(variant_output_path)
 
@@ -156,3 +163,37 @@ def execute_programs_and_produce_statistics() -> dict:
         "recall": recall,
         "f1_score": f1_score
     }
+
+
+def should_evaluate(problem_dir: str, dataset_dir: Path, pids_path: Path, failed_pids_path: Path) -> bool:
+    # Determines whether the given pid extracted from problem_dir should be evaluated.
+    # pid must be in pids.txt and not in failed_pids.txt
+    # datasets/TrickyBugs/{pid}/chat_generated_inputs must contain at least one .in file.
+
+    if not problem_dir.is_dir():
+            return False
+    
+    pid = problem_dir.name
+
+    try:
+        if not pids_path.exists():
+            return False
+        pids = set(pids_path.read_text().split())
+        print(pids)
+        if pid not in pids:
+            return False
+
+        if failed_pids_path.exists():
+            failed_pids = set(failed_pids_path.read_text().split())
+            if pid in failed_pids:
+                return False
+
+        input_dir = dataset_dir / pid / "chat_generated_inputs"
+        if not input_dir.exists():
+            return False
+        in_files = list(input_dir.glob("*.in"))
+        return len(in_files) > 0
+
+    except Exception as e:
+        print(f"[{pid}] Error in should_evaluate: {e}")
+        return False
