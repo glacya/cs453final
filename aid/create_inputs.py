@@ -24,12 +24,11 @@ CHAT_INPUTS_DIR = Path("chat_generated_inputs")
 
 # Log files
 FAILED_PIDS_FILE = Path("failed_pids.txt")
-FAILED_LOGS_FILE = Path("failed_logs.txt")
+FAILED_LOGS_FILE = Path("failed_logs.txt") # failed executing
 
 # Collect failures
 failed_pids = []
 failed_logs = []
-
 
 def generate_prompt_template(pro_des: str) -> str:
     return f""" 
@@ -209,6 +208,7 @@ def execute_code(pid: str):
         result = subprocess.run([sys.executable, parsed.name], cwd=gen_dir, capture_output=True, text=True)
         if result.returncode != 0:
             raise RuntimeError(f"Exit {result.returncode}: {result.stderr}")
+        
         return True
     except Exception as e:
         failed_pids.append(pid)
@@ -253,11 +253,40 @@ def write_logs():
         FAILED_LOGS_FILE.write_text("\n".join(failed_logs), encoding='utf-8')
         print(f"Logged failures: {len(failed_pids)} items.")
 
+def verify_and_collect_inputs(pid_list: Optional[Set[str]] = None):
+    for d in BASE_DIR.iterdir():
+        first = False # Only print the first moved file per pid
+
+        if not d.is_dir():
+            continue
+        pid = d.name
+        if pid_list and pid not in pid_list:
+            continue
+
+        excluded_dirs = {str(d / "chat_generated_inputs"), str(d / "original_test_cases")}
+        all_in_files = [
+            f for f in d.rglob("*.in")
+            if not any(str(f).startswith(excl) for excl in excluded_dirs)
+        ]
+        
+        chat_gen_dir = d / CHAT_INPUTS_DIR
+        chat_gen_dir.mkdir(parents=True, exist_ok=True)
+
+        for file in all_in_files:
+            dest = chat_gen_dir / file.name
+            try:
+                shutil.move(str(file), str(dest))
+                if not first: 
+                    print(f"[{pid}] Moved {file} -> {dest}")
+                    first = True
+            except Exception as e:
+                print(f"[{pid}] Failed to move {file} -> {dest}: {e}")
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Auto Input Generator')
     parser.add_argument('--model', type=str, default='qwen3:8b')
     parser.add_argument('--file', type=str, default='pids.txt')
-    parser.add_argument('--mode', choices=['generate', 'execute', 'both'], default='both',
+    parser.add_argument('--mode', choices=['generate', 'execute', 'both', 'verify'], default='both',
                         help='Operation mode')
     args = parser.parse_args()
 
@@ -269,5 +298,7 @@ if __name__ == '__main__':
         main_generate(args.model, pids)
     if args.mode in ('execute', 'both'):
         main_execute(pids)
+    if args.mode == 'verify':
+        verify_and_collect_inputs(pids)
 
     write_logs()
