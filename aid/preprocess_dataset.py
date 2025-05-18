@@ -63,6 +63,24 @@ def load_trickybugs_data_from_original_dataset():
         except Exception as e:
             print(e)
 
+# Copy original test cases for each problem directory
+# from trickybugs/problem/original_test_cases to our dataset folder.
+def load_original_test_cases():
+    trickybugs_path = Path(os.getenv("TRICKYBUGS_PATH"))
+    dataset_path = base_dir / "datasets/TrickyBugs"
+
+    for problem_dir in trickybugs_path.iterdir():
+        src_tests = problem_dir / "original_test_cases"
+        if not src_tests.is_dir():
+            continue
+
+        dest_dir = dataset_path / problem_dir.name / "original_test_cases"
+        dest_dir.mkdir(parents=True, exist_ok=True)
+
+        for test_file in src_tests.iterdir():
+            if test_file.is_file():
+                shutil.copy2(test_file, dest_dir / test_file.name)
+
 
 # AID filtered out some problems from original TrickyBugs/EvalPlus datasets.
 # This file does removing incomplete problem directories.

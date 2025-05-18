@@ -16,10 +16,13 @@ if __name__ == "__main__":
         load_dotenv()
 
         print("Loading data from AID dataset...")
-        load_trickybugs_data_from_aid_dataset()
+        #load_trickybugs_data_from_aid_dataset()
 
         print("Loading data from TrickyBugs dataset...")
-        load_trickybugs_data_from_original_dataset()
+        #load_trickybugs_data_from_original_dataset()
+
+        print("Loading original test cases from TrickyBugs dataset...")
+        load_original_test_cases()
 
         print("Removing incomplete data...")
         polish_trickybugs_problem_directory()
