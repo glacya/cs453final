@@ -2,10 +2,12 @@
 output.json
 */.env
 __pycache__/
+.vscode/
 
 aid/datasets/TrickyBugs/*/chat_generated_inputs/
 aid/datasets/TrickyBugs/*/input_generator/
 aid/datasets/TrickyBugs/*/outputs/
+aid/datasets/TrickyBugs/*/ref
 
 diffspec/datasets/TrickyBugs/*/chat_generated_inputs/
 diffspec/datasets/TrickyBugs/*/outputs/

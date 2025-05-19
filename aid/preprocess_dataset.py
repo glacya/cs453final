@@ -103,9 +103,16 @@ def polish_trickybugs_problem_directory():
     # It skips checking children of /variants directory.
     for problem_path in dataset_path.iterdir():
         hit = 0
+        has_og_test_cases = False
         for file_path in problem_path.iterdir():
             if file_path.name in necessary_entries:
                 hit += 1
+
+            if file_path.name == "original_test_cases":
+                has_og_test_cases = True
+        
+        if not has_og_test_cases:
+            print(problem_path.name)
 
         # Some of the element is missing. Destroy the directory.
         if hit < len(necessary_entries):

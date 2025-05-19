@@ -22,7 +22,7 @@ if __name__ == "__main__":
         #load_trickybugs_data_from_original_dataset()
 
         print("Loading original test cases from TrickyBugs dataset...")
-        load_original_test_cases()
+        # load_original_test_cases()
 
         print("Removing incomplete data...")
         polish_trickybugs_problem_directory()
