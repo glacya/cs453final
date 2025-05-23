@@ -11,3 +11,5 @@ aid/datasets/TrickyBugs/*/ref
 
 diffspec/datasets/TrickyBugs/*/chat_generated_inputs/
 diffspec/datasets/TrickyBugs/*/outputs/
+
+generated_tests/
