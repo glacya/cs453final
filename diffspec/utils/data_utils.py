@@ -14,4 +14,4 @@ def load_file(file_path):
 # save output to file
 def save_file(content, path):
     with open(path, 'w', encoding='utf-8')  as output:
-        output.write(clean_diff_output(content))
+        output.write(content)

@@ -2,13 +2,12 @@ from utils.model_utils import prompt_model
 
 def generate_differences_from_code_snippets(model, problem_name, spec, src_buggy, src_correct, label_buggy, label_correct):
     prompt = f"""
-You are an expert Python testing engineer.
-The goal is to find differential tests that returns different outputs in different implementations of python.
+You are an expert software testing engineer in python.
 
-You are provided with the relevant code implementing the instruction: 
+You are provided with the relevant code implementing the specification: 
 {spec}
 
-in two different implementations:
+You have two implementations of that spec:
 
 - Potentially buggy:
 {src_buggy}
@@ -16,7 +15,7 @@ in two different implementations:
 - Potentially correct:
 {src_correct}
 
-Identify and list the differences between the two code implementations that could indicate potential bugs or logic changes.
+Identify **only** those code-level differences that would lead to different behaviors.  
 Return **exactly** a Markdown list in this form (no extra text, no quotes):
 
 FORMAT:
@@ -30,32 +29,41 @@ FORMAT:
 """
     return prompt_model(prompt.strip(), model, temperature=0.1)
 
-def generate_test_descriptions_from_bug_code_diff(model, problem_name, spec, code_diff, bug_class, bug_description, label_buggy, label_correct):
+def generate_test_descriptions_from_bug_code_diff(model, problem_name, spec, code_diff, bug_class, bug_description, label_buggy, label_correct, src_buggy, src_correct):
     prompt = f"""
-You are an expert in software testing in python.
-The goal is to find differential tests that returns different outputs in different implementations of python.
+You are an expert software testing engineer in python.
 
 Here is the specification of the problem:
 {spec}
 
-And the difference of two implementaions:
+You are provided with a list of differences in the code implementations for the specification in two different implementations:
+
+- Potentially buggy:
+{src_buggy}
+
+- Potentially correct:
+{src_correct}
+
+- Key differences:
 {code_diff}
 
-Your task is to generate natural language test descriptions that would expose the difference in behavior.
-Focus on potential bugs when generating the test. Make it clear and simple.
+And the actual implementation under test:
+{src_buggy}
+
+Your task is to generate natural language test descriptions that would expose the difference in behavior, especially that can be buggy.
+Make it clear and simple.
 Return **exactly** a Markdown list in this form (no extra text, no quotes):
 
 FORMAT:
 ```
-- A test case with {{explanation about the test case}}
-- A test case with {{explanation about the test case}}
-- A test case with {{explanation about the test case}}
+- A test case with {{...}}
+- A test case with {{...}}
 ...
-- A test case with {{explanation about the test case}}
+- A test case with {{...}}
 ```
 
 """
-    return prompt_model(prompt.strip(), model, temperature=0.35)
+    return prompt_model(prompt.strip(), model, temperature=0.2, timeout=480.0)
 
 def split_spec_by_constraints(spec: str):
     keyword = "CONSTRAINTS:"
@@ -80,27 +88,26 @@ def generate_test_body(model, problem_name, spec, example_tests, nl_test_descrip
 
     {explanations}
 
-    Here is the CONSTRAINT AND EXAMPLES that shows THE FORMAT YOU SHOULD STRICTLY FOLLOW when generating the test input as an expert test engineer.
-    # CONSTRAINT AND EXAMPLES: 
+    Here are the constraints and an examples explaining **THE EXACT FORMAT YOU SHOULD STRICTLY FOLLOW** when generating the test input:
     {constraints_and_examples}
 
-    Here is a description of a test that can result in differential behaviour in the two implementations for the problem:
+    Here is a  **natural-language description** of the specific differential test we need:
 
     {nl_test_description}
 
-    Your output should follow the below format as a result inside the plaintext, but the content should be from the differential test description.
+    Your test input should follow the below format as a result inside the plaintext. 
     Only show the input in the ``` ```block after the 'input :' line. STRICTLY FOLLOW THE FORMAT
 
     FORMAT:
 
-    # Test Case 1: {{the instruction written in the description}}
+    # Test Case 1: {{brief one-line instruction from the description}}
+    input :     
     ```
-    input : 
-    {{test input you generated. just the numbers of line and values of variables not the name of variables }}
+    {{the raw test input—just lines of values, no variable names or extra text}}
     ```
 
     """ 
-    return prompt_model(prompt.strip(), model, temperature=0.2)
+    return prompt_model(prompt.strip(), model, temperature=0.05)
 
 # 중간 버전
 # prompt = f"""

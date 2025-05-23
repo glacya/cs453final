@@ -101,12 +101,17 @@ def run_descriptions(pids, args, bugs_df):
         problem_dir = os.path.join(args.base_path, subdir)
         spec_path = os.path.join(problem_dir, "spec.txt")
         diffs_path = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
+        buggy_path = os.path.join(problem_dir, "put.py")
+        variant_path = os.path.join(problem_dir, "variants/variant0.py")
         if not os.path.exists(spec_path) or not os.path.exists(diffs_path):
             print(f"[!] Missing spec or diffs for {subdir}, skipping descriptions.")
             continue
         spec = load_file(spec_path).strip()
         raw_code_diffs = load_file(diffs_path)
         code_diffs = clean_diff_output(raw_code_diffs)
+
+        buggy_code = load_file(buggy_path)
+        variant_code = load_file(variant_path)
 
         for k, bug in bugs_df.iterrows():
             bug_class = bug["bug_class"]
@@ -121,7 +126,7 @@ def run_descriptions(pids, args, bugs_df):
                     desc_cache,
                     lambda diff=code_diffs, bug_class=bug_class, bug_description=bug_description: generate_test_descriptions_from_bug_code_diff(
                         "qwen3:8b", subdir, spec,
-                        diff, bug_class, bug_description, "buggy", "variant"
+                        diff, bug_class, bug_description, "buggy", "variant", buggy_code, variant_code
                     )
                 )
                 #cleaned = clean_diff_output(raw_nl)
