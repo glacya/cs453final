@@ -2,40 +2,60 @@ from utils.model_utils import prompt_model
 
 def generate_differences_from_code_snippets(model, problem_name, spec, src_buggy, src_correct, label_buggy, label_correct):
     prompt = f"""
-You are an expert software testing engineer in python.
-Here is a problem specification written in natural language:
+You are an expert Python testing engineer.
+The goal is to find differential tests that returns different outputs in different implementations of python.
 
+You are provided with the relevant code implementing the instruction: 
 {spec}
 
-You are provided with two implementations of the same problem.
-One of them is potentially buggy ({label_buggy}) and the other is potentially correct ({label_correct}).
+in two different implementations:
 
-Implementation ({label_buggy}):
+- Potentially buggy:
 {src_buggy}
 
-Implementation ({label_correct}):
+- Potentially correct:
 {src_correct}
 
-Identify and list the differences between the two code snippets that could indicate potential bugs or logic changes.
-Return only the list of code-level differences that would lead to different behaviors.
+Identify and list the differences between the two code implementations that could indicate potential bugs or logic changes.
+Return **exactly** a Markdown list in this form (no extra text, no quotes):
+
+FORMAT:
+```
+- The buggy version {{…}}, while the variant {{…}}
+- The buggy version {{…}}, while the variant {{…}}
+- …
+- The buggy version {{…}}, while the variant {{…}}
+```
+
 """
-    return prompt_model(prompt.strip(), model)
+    return prompt_model(prompt.strip(), model, temperature=0.1)
 
 def generate_test_descriptions_from_bug_code_diff(model, problem_name, spec, code_diff, bug_class, bug_description, label_buggy, label_correct):
     prompt = f"""
 You are an expert in software testing in python.
-You are working on the problem '{problem_name}'. Here is its specification:
+The goal is to find differential tests that returns different outputs in different implementations of python.
 
+Here is the specification of the problem:
 {spec}
 
-You found the following difference in two implementations:
-
+And the difference of two implementaions:
 {code_diff}
 
 Your task is to generate natural language test descriptions that would expose the difference in behavior.
-Provide only a list of test descriptions.
+Focus on potential bugs when generating the test. Make it clear and simple.
+Return **exactly** a Markdown list in this form (no extra text, no quotes):
+
+FORMAT:
+```
+- A test case with {{explanation about the test case}}
+- A test case with {{explanation about the test case}}
+- A test case with {{explanation about the test case}}
+...
+- A test case with {{explanation about the test case}}
+```
+
 """
-    return prompt_model(prompt.strip(), model)
+    return prompt_model(prompt.strip(), model, temperature=0.35)
 
 def split_spec_by_constraints(spec: str):
     keyword = "CONSTRAINTS:"
@@ -79,14 +99,8 @@ def generate_test_body(model, problem_name, spec, example_tests, nl_test_descrip
     {{test input you generated. just the numbers of line and values of variables not the name of variables }}
     ```
 
-    # Test Case 2: {{the instruction written in the description}}
-    ```
-    input : 
-    {{test input you generated. just the numbers of line and values of variables not the name of variables }}
-    ```
-
     """ 
-    return prompt_model(prompt.strip(), model)
+    return prompt_model(prompt.strip(), model, temperature=0.2)
 
 # 중간 버전
 # prompt = f"""

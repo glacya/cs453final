@@ -8,6 +8,11 @@ from utils.prompt_utils import (
     generate_test_body
 )
 
+failed_pids_diff = []
+failed_pids_desc = []
+failed_pids_body = []
+
+
 def try_cached_or_generate(path, generator_fn):
     if os.path.exists(path):
         return load_file(path)
@@ -75,13 +80,18 @@ def run_diffs(pids, args):
         variant_code = load_file(variant_path)
 
         diff_cache = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
-        raw_code_diffs = try_cached_or_generate(
-            diff_cache,
-            lambda: generate_differences_from_code_snippets(
-                "qwen3:8b", subdir, spec, buggy_code, variant_code, "buggy", "variant"
+        try:
+            raw_code_diffs = try_cached_or_generate(
+                diff_cache,
+                lambda: generate_differences_from_code_snippets(
+                    "qwen3:8b", subdir, spec, buggy_code, variant_code, "buggy", "variant"
+                )
             )
-        )
-        code_diffs = clean_diff_output(raw_code_diffs)
+            code_diffs = clean_diff_output(raw_code_diffs)
+        except Exception as e:
+                print(f"[!] Exception during generation for {subdir} / error: {e}")
+                failed_pids_diff.append(subdir)
+                continue
         # saved to cache; further processing in descriptions/bodies stages
 
 
@@ -118,6 +128,7 @@ def run_descriptions(pids, args, bugs_df):
                 # descriptions cached raw; bodies stage will split and prefix
             except Exception as e:
                 print(f"[!] Exception during generation for {subdir} / bug {k}: {e}")
+                failed_pids_desc.append(subdir)
                 continue
 
 def run_bodies(pids, args, bugs_df):
@@ -137,6 +148,8 @@ def run_bodies(pids, args, bugs_df):
 
         for k, bug in bugs_df.iterrows():
             bug_class = bug["bug_class"]
+            bug_description = bug["description"]
+            print(f"  [Bug {k}] {bug_class} - {bug_description}")
             desc_cache = os.path.join(
                 args.output_path, "cache/descriptions",
                 f"{subdir}_{k}.txt"
@@ -146,13 +159,29 @@ def run_bodies(pids, args, bugs_df):
             raw_nl = load_file(desc_cache)
             nl_clean = clean_diff_output(raw_nl)
             nl_test_description = nl_clean #           nl_test_description = f"# Code diff: {code_diffs}\n{nl_clean}"
-            generated = generate_test_body(
-                "qwen3:8b", subdir, spec, example_tests, nl_test_description
-            )
+            try:
+                generated = generate_test_body(
+                    "qwen3:8b", subdir, spec, example_tests, nl_test_description
+                )
+            except Exception as e:
+                print(f"[!] Exception during generation for {subdir} / bug {k}: {e}")
+                failed_pids_body.append(subdir)
+                continue
             out = generated.replace("#", "\n#")
             test_code = f"# {nl_test_description}\n{out}"
             out_file = f"{subdir}_{k}.py"
             save_file(test_code, os.path.join(args.output_path, "processed", out_file))
+
+def write_logs():
+    if failed_pids_diff:
+        with open("failed_pids_diff.txt", "w", encoding="utf-8") as f:
+            f.write("\n".join(failed_pids_diff))
+    if failed_pids_desc:
+        with open("failed_pids_desc.txt", "w", encoding="utf-8") as f:
+            f.write("\n".join(failed_pids_desc))
+    if failed_pids_body:
+        with open("failed_pids_body.txt", "w", encoding="utf-8") as f:
+            f.write("\n".join(failed_pids_body))
 
 
 def main():
@@ -170,6 +199,8 @@ def main():
 
     if args.mode == "all":
         print("[O] Test generation completed.")
+    
+    write_logs()
 
 if __name__ == "__main__":
     main()
