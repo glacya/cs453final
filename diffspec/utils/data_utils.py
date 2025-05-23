@@ -6,12 +6,12 @@ def clean_diff_output(text: str) -> str:
 
 # load file given path
 def load_file(file_path):
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         data = f.read()
     return data
 
 
 # save output to file
 def save_file(content, path):
-    with open(path, 'w') as output:
-        output.write(content)
+    with open(path, 'w', encoding='utf-8')  as output:
+        output.write(clean_diff_output(content))

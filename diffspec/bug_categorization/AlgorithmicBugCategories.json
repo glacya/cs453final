@@ -10,34 +10,6 @@
     {
       "bug_class": "Missing Edge Case",
       "description": "The code fails to handle edge cases like empty input, large values, or single-element arrays."
-    },
-    {
-      "bug_class": "Incorrect Return Value",
-      "description": "The function returns a value that does not match the expected output due to incorrect logic or data handling."
-    },
-    {
-      "bug_class": "Wrong Comparison Operator",
-      "description": "Using == instead of >=, or < instead of <=, which leads to logical errors in conditionals or loops."
-    },
-    {
-      "bug_class": "Incorrect Data Structure Usage",
-      "description": "Choosing a wrong or suboptimal data structure, like using a list instead of a set, leading to incorrect behavior or poor performance."
-    },
-    {
-      "bug_class": "Variable Initialization Error",
-      "description": "Variables are initialized with incorrect default values, leading to unintended results or failure to accumulate data properly."
-    },
-    {
-      "bug_class": "Infinite Loop",
-      "description": "The loop never terminates due to incorrect condition or missing update to loop variables."
-    },
-    {
-      "bug_class": "Index Out of Range",
-      "description": "Accessing an array or list index that does not exist, which may crash the program or yield incorrect values."
-    },
-    {
-      "bug_class": "Incorrect Recursion Base Case",
-      "description": "A recursive function does not correctly handle its base case, leading to stack overflow or incorrect results."
     }
   ]
   

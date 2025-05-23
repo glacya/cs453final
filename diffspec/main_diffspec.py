@@ -1,5 +1,5 @@
 import os
-import time
+import argparse
 import pandas as pd
 from utils.data_utils import load_file, save_file, clean_diff_output
 from utils.prompt_utils import (
@@ -16,24 +16,56 @@ def try_cached_or_generate(path, generator_fn):
         save_file(result, path)
         return result
 
-def main():
-    model = "qwen3:8b"
-    base_path = "../aid/datasets/TrickyBugs"
-    output_path = "generated_tests"
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Run diff-based test generation in configurable stages"
+    )
+    parser.add_argument(
+        "-m", "--mode",
+        choices=["diffs", "descriptions", "bodies", "all"],
+        default="all",
+        help="Which stage to run: diffs, descriptions, bodies, or all"
+    )
+    parser.add_argument(
+        "-f", "--file",
+        default="pids.txt",
+        help="Path to file listing project IDs (one per line)"
+    )
+    parser.add_argument(
+        "--base-path",
+        default="../aid/datasets/TrickyBugs",
+        help="Base directory containing project folders"
+    )
+    parser.add_argument(
+        "--output-path",
+        default="generated_tests",
+        help="Directory to store caches and outputs"
+    )
+    return parser.parse_args()
+
+
+def read_pids(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"PID file not found: {file_path}")
+    with open(file_path, 'r') as f:
+        return [line.strip() for line in f if line.strip()]
+
+
+def ensure_dirs(output_path):
     os.makedirs(os.path.join(output_path, "processed"), exist_ok=True)
     os.makedirs(os.path.join(output_path, "cache/diffs"), exist_ok=True)
     os.makedirs(os.path.join(output_path, "cache/descriptions"), exist_ok=True)
 
-    bugs_df = pd.read_json('bug_categorization/AlgorithmicBugCategories.json')
 
-    subdirs = [d for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))]
-    for i, subdir in enumerate(subdirs):
-        problem_dir = os.path.join(base_path, subdir)
+def run_diffs(pids, args):
+    for i, subdir in enumerate(pids):
+        print(f"\n[Problem {i}] {subdir}")
+        problem_dir = os.path.join(args.base_path, subdir)
         spec_path = os.path.join(problem_dir, "spec.txt")
         buggy_path = os.path.join(problem_dir, "put.py")
         variant_path = os.path.join(problem_dir, "variants/variant0.py")
-        example_path = os.path.join(problem_dir, 'original_test_cases/sys_test0.in')
-
+        example_path = os.path.join(problem_dir, "original_test_cases/sys_test0.in")
         if not all(os.path.exists(p) for p in [spec_path, buggy_path, variant_path, example_path]):
             print(f"[!] Skipping incomplete problem at {subdir}")
             continue
@@ -41,53 +73,103 @@ def main():
         spec = load_file(spec_path).strip()
         buggy_code = load_file(buggy_path)
         variant_code = load_file(variant_path)
-        example_tests = load_file(example_path)
 
-        print(f"\n[Problem {i}] {subdir}")
-
-        # Cache key for code diff
-        diff_cache_path = os.path.join(output_path, "cache/diffs", f"{subdir}.txt")
+        diff_cache = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
         raw_code_diffs = try_cached_or_generate(
-            diff_cache_path,
+            diff_cache,
             lambda: generate_differences_from_code_snippets(
-                model, subdir, spec, buggy_code, variant_code, "buggy", "variant"
+                "qwen3:8b", subdir, spec, buggy_code, variant_code, "buggy", "variant"
             )
         )
+        code_diffs = clean_diff_output(raw_code_diffs)
+        # saved to cache; further processing in descriptions/bodies stages
+
+
+def run_descriptions(pids, args, bugs_df):
+    for subdir in pids:
+        print(f"\n[Descriptions] Processing {subdir}")
+        problem_dir = os.path.join(args.base_path, subdir)
+        spec_path = os.path.join(problem_dir, "spec.txt")
+        diffs_path = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
+        if not os.path.exists(spec_path) or not os.path.exists(diffs_path):
+            print(f"[!] Missing spec or diffs for {subdir}, skipping descriptions.")
+            continue
+        spec = load_file(spec_path).strip()
+        raw_code_diffs = load_file(diffs_path)
         code_diffs = clean_diff_output(raw_code_diffs)
 
         for k, bug in bugs_df.iterrows():
             bug_class = bug["bug_class"]
             bug_description = bug["description"]
             print(f"  [Bug {k}] {bug_class} - {bug_description}")
-            nl_test_descriptions_list = []
-
-            for d, diff in enumerate(code_diffs.split("\n\n")):
-                desc_cache_path = os.path.join(output_path, "cache/descriptions", f"{subdir}_{bug_class.replace(' ', '')}_{d}.txt")
-                raw_nl_test_descriptions = try_cached_or_generate(
-                    desc_cache_path,
-                    lambda: generate_test_descriptions_from_bug_code_diff(
-                        model, subdir, spec, diff, bug_class, bug_description, "buggy", "variant"
+            desc_cache = os.path.join(
+                args.output_path, "cache/descriptions",
+                f"{subdir}_{k}.txt"
+            )
+            try:
+                raw_nl = try_cached_or_generate(
+                    desc_cache,
+                    lambda diff=code_diffs, bug_class=bug_class, bug_description=bug_description: generate_test_descriptions_from_bug_code_diff(
+                        "qwen3:8b", subdir, spec,
+                        diff, bug_class, bug_description, "buggy", "variant"
                     )
                 )
-                nl_test_descriptions = clean_diff_output(raw_nl_test_descriptions)
-                nl_test_descriptions = [
-                    f"# Code diff: {diff}\n{desc}" for desc in nl_test_descriptions.split("\n\n")
-                ]
-                nl_test_descriptions_list.extend(nl_test_descriptions)
+                #cleaned = clean_diff_output(raw_nl)
+                # descriptions cached raw; bodies stage will split and prefix
+            except Exception as e:
+                print(f"[!] Exception during generation for {subdir} / bug {k}: {e}")
+                continue
 
-            for j, nl_test_description in enumerate(nl_test_descriptions_list):
-                nl_test_description = " ".join(nl_test_description.splitlines()).strip()
-                generated_test = generate_test_body(
-                    model, subdir, spec, example_tests, nl_test_description
-                )
-                generated_test = generated_test.replace("#", "\n#")
-                print(generated_test)
+def run_bodies(pids, args, bugs_df):
+    for subdir in pids:
+        print(f"\n[Bodies] Processing {subdir}")
+        problem_dir = os.path.join(args.base_path, subdir)
+        spec_path = os.path.join(problem_dir, "spec.txt")
+        example_path = os.path.join(problem_dir, "original_test_cases/sys_test0.in")
+        diffs_path = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
+        if not all(os.path.exists(p) for p in [spec_path, example_path, diffs_path]):
+            print(f"[!] Skipping incomplete problem at {subdir}")
+            continue
+        spec = load_file(spec_path).strip()
+        example_tests = load_file(example_path)
+        raw_code_diffs = load_file(diffs_path)
+        code_diffs = clean_diff_output(raw_code_diffs)
 
-                test_code = f"# {nl_test_description}\n{generated_test}"
-                out_file = f"{subdir}_{bug_class.replace(' ', '')}_{j}.py"
-                save_file(test_code, os.path.join(output_path, "processed", out_file))
+        for k, bug in bugs_df.iterrows():
+            bug_class = bug["bug_class"]
+            desc_cache = os.path.join(
+                args.output_path, "cache/descriptions",
+                f"{subdir}_{k}.txt"
+            )
+            if not os.path.exists(desc_cache):
+                continue
+            raw_nl = load_file(desc_cache)
+            nl_clean = clean_diff_output(raw_nl)
+            nl_test_description = nl_clean #           nl_test_description = f"# Code diff: {code_diffs}\n{nl_clean}"
+            generated = generate_test_body(
+                "qwen3:8b", subdir, spec, example_tests, nl_test_description
+            )
+            out = generated.replace("#", "\n#")
+            test_code = f"# {nl_test_description}\n{out}"
+            out_file = f"{subdir}_{k}.py"
+            save_file(test_code, os.path.join(args.output_path, "processed", out_file))
 
-    print("[✓] Test generation completed.")
+
+def main():
+    args = parse_args()
+    ensure_dirs(args.output_path)
+    pids = read_pids(args.file)
+    bugs_df = pd.read_json('bug_categorization/AlgorithmicBugCategories.json')
+
+    if args.mode in ("diffs", "all"):
+        run_diffs(pids, args)
+    if args.mode in ("descriptions", "all"):
+        run_descriptions(pids, args, bugs_df)
+    if args.mode in ("bodies", "all"):
+        run_bodies(pids, args, bugs_df)
+
+    if args.mode == "all":
+        print("[O] Test generation completed.")
 
 if __name__ == "__main__":
     main()

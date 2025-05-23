@@ -32,36 +32,82 @@ You found the following difference in two implementations:
 
 {code_diff}
 
-This difference may be related to the bug type: '{bug_class}'.
-Bug description: {bug_description}
-
-Your task is to generate natural language test descriptions that would expose the difference in behavior caused by this bug.
-Focus on how the bug violates the specification. Provide only a list of test descriptions.
+Your task is to generate natural language test descriptions that would expose the difference in behavior.
+Provide only a list of test descriptions.
 """
     return prompt_model(prompt.strip(), model)
+
+def split_spec_by_constraints(spec: str):
+    keyword = "CONSTRAINTS:"
+    index = spec.find(keyword)
+
+    if index == -1:
+        raise ValueError("The keyword 'CONSTRAINTS:' was not found in the spec.")
+
+    explanations = spec[:index].rstrip()
+    constraints_and_examples = spec[index:].lstrip()
+
+    return explanations, constraints_and_examples
 
 def generate_test_body(model, problem_name, spec, example_tests, nl_test_description):
+    explanations, constraints_and_examples = split_spec_by_constraints(spec)
     prompt = f"""
-You are an expert test engineer in python.
-The goal is to find differential tests that returns different outputs in different implementations for this problem.
-Here is a problem specification:
+    You are an expert test engineer in python. You usualy generate inputs that match the given constraint and examples as your job.
 
-{spec}
+    The goal is to find test inputs for differential tests that returns different outputs in different implementations for an problem so we can test for nuances in the two implementations based on the natural language specifications. 
 
-Your goal is to generate differential tests so we can test for nuances in the two implementations based on the natural language specifications. 
+    Here is a problem specification:
 
-Here are some examples of existing tests for this problem.
+    {explanations}
 
-{example_tests}
+    Here is the CONSTRAINT AND EXAMPLES that shows THE FORMAT YOU SHOULD STRICTLY FOLLOW when generating the test input as an expert test engineer.
+    # CONSTRAINT AND EXAMPLES: 
+    {constraints_and_examples}
 
-Here is a description of a test that can result in differential behaviour in the two implementations for the problem.
-{nl_test_description}
+    Here is a description of a test that can result in differential behaviour in the two implementations for the problem:
 
-Generate the code for the test in the same format as the example. 
-You are required to strictly follow these instructions when generating the test.
-1. Make sure you only generate one test.
-2. Do not include comments in the same line as code.
-Only generate the test case so it can be directly executed, and comment out any natural language descriptions describing what the test does."
+    {nl_test_description}
 
-"""
+    Your output should follow the below format as a result inside the plaintext, but the content should be from the differential test description.
+    Only show the input in the ``` ```block after the 'input :' line. STRICTLY FOLLOW THE FORMAT
+
+    FORMAT:
+
+    # Test Case 1: {{the instruction written in the description}}
+    ```
+    input : 
+    {{test input you generated. just the numbers of line and values of variables not the name of variables }}
+    ```
+
+    # Test Case 2: {{the instruction written in the description}}
+    ```
+    input : 
+    {{test input you generated. just the numbers of line and values of variables not the name of variables }}
+    ```
+
+    """ 
     return prompt_model(prompt.strip(), model)
+
+# 중간 버전
+# prompt = f"""
+# SYSTEM: ALWAYS wrap your entire test input in a single ```plaintext  ``` block and emit no other text.
+
+# You are an expert test engineer in python.
+# The goal is to find differential tests that returns different outputs in different implementations for this problem.
+
+# Here is a problem specification:
+
+# {explanations}
+
+# Your goal is to generate differential tests so we can test for nuances in the two implementations based on the natural language specifications. 
+
+# Here is the CONSTRAINT AND EXAMPLES that shows THE FORMAT YOU SHOULD STRICTLY FOLLOW when generating the test.
+# CONSTRAINT AND EXAMPLES: 
+# {constraints_and_examples}
+
+# Here is a description of a test that can result in differential behaviour in the two implementations for the problem:
+
+# {nl_test_description}
+
+# Generate one input for the test in the same format as the CONSTRAINT AND EXAMPLES shows. 
+# """ 
