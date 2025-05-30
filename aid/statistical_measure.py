@@ -32,6 +32,10 @@ def execute_problem(problem_dir: Path) -> tuple:
     true_negative = 0
     false_positive = 0
     false_negative = 0
+    undetermined = 0
+    variant_failed = 0
+    put_failed = 0
+    ref_failed = 0
 
     # Define paths.
     input_dir = problem_dir / "chat_generated_inputs"
@@ -43,7 +47,7 @@ def execute_problem(problem_dir: Path) -> tuple:
     # Check if input directory is empty. If empty, skip and report.
     if input_dir.is_dir() and not any(input_dir.iterdir()):
         print(f"- Skipping {problem_dir.name}, input directory empty")
-        return (0, 0, 0, 0)
+        return (0, 0, 0, 0, 0, 0, 0, 0)
 
     # Make directory for outputs.
     output_dir = problem_dir / "outputs"
@@ -66,6 +70,7 @@ def execute_problem(problem_dir: Path) -> tuple:
                 subprocess.run(f"python {put_path} < {input_path} > {put_output_path}", shell=True, stderr=subprocess.DEVNULL, timeout=10)
             except:
                 # log_file.write(f"- PUT failed to run input {input_name}")
+                put_failed += 1
                 continue
 
             # Run reference program.
@@ -73,10 +78,11 @@ def execute_problem(problem_dir: Path) -> tuple:
                 subprocess.run(f"{ref_path} < {input_path} > {ref_output_path}", shell=True, stderr=subprocess.DEVNULL, timeout=10)
             except:
                 # log_file.write(f"- REF failed to run input {input_name}")
+                ref_failed += 1
                 continue
 
             # Run variants.
-            variant_num = len(list(variant_dir.iterdir()))
+            # variant_num = len(list(variant_dir.iterdir()))
 
             variant_output_paths = []
             # variant_output_paths = [None for _ in range(variant_num)]
@@ -102,7 +108,7 @@ def execute_problem(problem_dir: Path) -> tuple:
                     if result.returncode == 0:
                         variant_output_paths.append(variant_output_path)
                 except:
-                    pass
+                    variant_failed += 1
                     # log_file.write(f"- Variant {var_name} failed to run input {input_name}")
 
             # Now, check the outputs.
@@ -183,7 +189,7 @@ def execute_problem(problem_dir: Path) -> tuple:
                 elif variant_final_output == ref_output:
                     true_positive += 1
                 else:
-                    false_positive += 1
+                    undetermined += 1
 
         except Exception as e:
             print(f"While running problem {problem_dir.name}, an exception occurred:")
@@ -191,7 +197,7 @@ def execute_problem(problem_dir: Path) -> tuple:
 
     print(f"- Problem {problem_dir.name} took {time.time() - prob_start_time} seconds")
 
-    return (true_positive, true_negative, false_positive, false_negative)
+    return (true_positive, true_negative, false_positive, false_negative, undetermined, put_failed, ref_failed, variant_failed)
 
 def execute_programs_and_produce_statistics() -> dict:
     base_dir = Path(__file__).resolve().parent
@@ -201,6 +207,10 @@ def execute_programs_and_produce_statistics() -> dict:
     true_negative = 0
     false_positive = 0
     false_negative = 0
+    undetermined = 0
+    put_failed = 0
+    ref_failed = 0
+    variant_failed = 0
 
     no_chat_inputs_pid = base_dir / "no_chat_inputs_pid.txt"
     no_chat_inputs_list = ""
@@ -219,6 +229,10 @@ def execute_programs_and_produce_statistics() -> dict:
                 true_negative += result[1]
                 false_positive += result[2]
                 false_negative += result[3]
+                undetermined += result[4]
+                put_failed += result[5]
+                ref_failed += result[6]
+                variant_failed += result[7]
 
             except Exception as e:
                 print(f"Error processing {path}: {e}")
@@ -254,6 +268,10 @@ def execute_programs_and_produce_statistics() -> dict:
         "true_negative": true_negative,
         "false_positive": false_positive,
         "false_negative": false_negative,
+        "undetermined": undetermined,
+        "put_failed": put_failed,
+        "ref_failed": ref_failed,
+        "variant_failed": variant_failed,
         "precision": precision,
         "recall": recall,
         "f1_score": f1_score
