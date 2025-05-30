@@ -1,0 +1,75 @@
+To determine the correct input examples, we follow the user's instruction to extract **code blocks** (enclosed in triple backticks) and **lines starting with "Input:"** from the text.
+
+---
+
+### Step-by-Step Analysis
+
+1. **Code Blocks**:
+   - These are clearly marked by triple backticks (````...````) and represent input examples.
+   - They are the primary focus of the instruction.
+
+2. **Lines Starting with "Input:"**:
+   - These are not enclosed in code blocks but are part of the text.
+   - According to the instruction, such lines should also be considered as input examples.
+
+---
+
+### Extracted Input Examples
+
+From the text dump, we identify the following input examples:
+
+#### 1. Code Block (Python)
+```python
+edges = [(1, 2, 5)]
+```
+
+#### 2. Code Block (Test Case 1)
+```plaintext
+2 1
+1 2 5
+```
+
+#### 3. Code Block (Test Case 2)
+```plaintext
+2 2
+1 2 5
+1 2 6
+```
+
+#### 4. Code Block (Test Case 3)
+```plaintext
+2 3
+1 2 5
+1 2 6
+1 2 7
+```
+
+#### 5. Code Block (Test Case 4)
+```plaintext
+2 3
+1 2 5
+1 2 6
+1 2 7
+```
+
+#### 6. Line Starting with "Input:"
+```
+Input:
+```
+
+---
+
+### Final Answer
+
+$$
+\boxed{
+[
+  "edges = [(1, 2, 5)]",
+  "2 1\n1 2 5",
+  "2 2\n1 2 5\n1 2 6",
+  "2 3\n1 2 5\n1 2 6\n1 2 7",
+  "2 3\n1 2 5\n1 2 6\n1 2 7",
+  "Input:"
+]
+}
+$$

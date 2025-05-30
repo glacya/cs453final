@@ -1,0 +1,32 @@
+Based on the provided text and the instructions to extract input examples that are either in **code blocks (triple backticks)** or **lines starting with "Input:"**, the following input examples are identified:
+
+---
+
+### ✅ Input Examples
+
+1. **`2 6`**  
+   (From the "EXAMPLES" section under the problem's constraints)
+
+2. **`3 12`**  
+   (From the "EXAMPLES" section under the problem's constraints)
+
+3. **`100000 1000000000`**  
+   (From the "EXAMPLES" section under the problem's constraints)
+
+4. **`N = 2`**  
+   (From the "Correct Test Case" section, under the line **"Input:"**)
+
+5. **`M = 15`**  
+   (From the "Correct Test Case" section, under the line **"Input:"**)
+
+---
+
+### 📌 Final Answer
+
+```plaintext
+2 6
+3 12
+100000 1000000000
+N = 2
+M = 15
+```

@@ -1,0 +1,21 @@
+The input examples provided in the text dump are the code blocks associated with the Test Cases 1, 2, and 3. These code blocks are enclosed in triple-backticks and are preceded by an "input:" line, as per the instructions. Here are the three input examples:
+
+1. **Test Case 1:**
+   ```
+   2
+   2 3
+   ```
+
+2. **Test Case 2:**
+   ```
+   2
+   3 3
+   ```
+
+3. **Test Case 3:**
+   ```
+   2
+   3 3
+   ```
+
+These are the three input examples extracted from the text dump.

@@ -1,0 +1,8 @@
+[
+  "INPUT:\nThe input is given from Standard Input. The first line of the input is\nT\nThen, T lines follow describing the T testcases. Each of the T lines has the format\nN A B C D",
+  "**Input:**\n- `N = 2`\n- `D = 1` (cost to add 1)\n- `A = 1`, `B = 1`, `C = 1` (other operations, not relevant here)",
+  "**Input:**\n- `N = 3`\n- `D = 2` (cost to add 2)\n- `A = 2`, `B = 2`, `C = 2` (other operations, not relevant here)",
+  "**Input:**\n- `N = 4`\n- `D = 3` (cost to add 3)\n- `A = 3`, `B = 3`, `C = 3` (other operations, not relevant here)",
+  "**Input:**\n- `N = 5`\n- `D = 4` (cost to add 4)\n- `A = 4`, `B = 4`, `C = 4` (other operations, not relevant here)",
+  "**Input:**\n- `N = 6`\n- `D = 5` (cost to add 5)\n- `A = 5`, `B = 5`, `C = 5` (other operations, not relevant here)"
+]

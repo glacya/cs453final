@@ -1,0 +1,26 @@
+The input examples extracted from the text are as follows:
+
+1. **Code Block Input Example:**
+```
+3
+1 100 100 100 1
+2 1 100 100 1
+5 100 100 100 1
+```
+
+This is a valid input example because it is enclosed in triple backticks and contains structured input data.
+
+2. **Text-Prefixed Input Example:**
+```
+N = 1, D = 1, A = 100, B = 100, C = 100
+```
+
+This line is prefixed with "Input:" in the text, making it another valid input example. However, it appears to be part of an explanation rather than the actual input data. If the goal is to extract only the actual input data (as per the problem's structure), this line may not be considered an input example. 
+
+**Final Answer:**
+```
+3
+1 100 100 100 1
+2 1 100 100 1
+5 100 100 100 1
+```

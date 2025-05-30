@@ -1,0 +1,7 @@
+```python
+[
+    "2\n2 1 100 100 1\n3 100 1 100 1",
+    "**Input:**\n- `N = 2`\n- `A = 1` (cost to multiply by 2)\n- `D = 1` (cost to add 1)\n- `B = 100`, `C = 100` (other operations are expensive)",
+    "**Input:**\n- `N = 3`\n- `B = 1` (cost to multiply by 3)\n- `D = 1` (cost to add 1)\n- `A = 100`, `C = 100` (other operations are expensive)"
+]
+```

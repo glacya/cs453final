@@ -1,0 +1,17 @@
+The input examples in the provided text are the three code blocks that follow the specified format of `N W` followed by lines of `w_i v_i`. These are enclosed in triple backticks and represent valid input examples as per the problem's structure.
+
+### Final Answer:
+```python
+1 2
+1 1
+```
+```python
+2 3
+1 1
+1 1
+```
+```python
+2 4
+1 1
+1 1
+```

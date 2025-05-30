@@ -1,0 +1,78 @@
+To determine which parts of the text qualify as **input examples**, we must strictly follow the user's instructions:
+
+---
+
+### ✅ **Rule 1: Code Fences**
+> "1. Recognize triple-backtick code fences, whether or not they contain the word 'Input:' but it looks like a input."
+
+This means **any block of text enclosed in triple backticks (` ``` `)** is considered an input example, **regardless of its content**.
+
+---
+
+### ✅ **Rule 2: Prefixed Lines**
+> "2. If there is no triple-backtick code fences, recognize lines or paragraphs prefixed by 'Input:' even outside fences."
+
+This means **any line or paragraph starting with 'Input:'** is also considered an input example.
+
+---
+
+### ❌ **Rule 3: Case Sensitivity**
+> The instruction explicitly says to look for **"Input:"** (lowercase), not **"INPUT:"** (uppercase). Therefore, **uppercase prefixes are not considered valid input examples**.
+
+---
+
+### 📜 **Text Analysis**
+
+#### 1. **"EXAMPLES" Section**
+- The input examples are written as:
+  ```
+  INPUT:
+  6 4
+  -10 8 2 1 2 6
+  ```
+  - These are **not** in code fences.
+  - They are **not** prefixed with "Input:" (lowercase), but with "INPUT:" (uppercase).
+  - **Conclusion**: These are **not** valid input examples under the user's rules.
+
+#### 2. **Test Cases After Conclusion**
+- Each test case has an input in a **code fence**:
+  ```text
+  # Test Case 1: Off-by-one error in loop bounds
+  input :     
+  ```
+  2 2
+  -5 -3
+  ```
+
+  ```text
+  # Test Case 2: Missing the case of taking zero jewels
+  input :     
+  ```
+  2 2
+  -5 -3
+  ```
+
+  ```text
+  # Test Case 3: Invalid loop range when K > N
+  input :     
+  ```
+  3 5
+  -10 -20 -30
+  ```
+
+  - All three are **code fences**.
+  - **Conclusion**: These are **valid input examples**.
+
+---
+
+### ✅ **Final Answer**
+
+```json
+[
+  "2 2\n-5 -3",
+  "2 2\n-5 -3",
+  "3 5\n-10 -20 -30"
+]
+```
+
+These are the only valid input examples from the text, as they are enclosed in code fences. The "EXAMPLES" section's input is not considered valid under the user's rules.

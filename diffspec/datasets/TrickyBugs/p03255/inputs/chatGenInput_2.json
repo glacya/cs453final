@@ -1,0 +1,75 @@
+To extract all input examples from the provided text, we need to identify all code blocks that represent input data in the format:
+
+```
+<first_line>
+<second_line>
+```
+
+These code blocks are enclosed in triple backticks (` ``` `) and represent the input format used in the problem statement examples.
+
+---
+
+### Step-by-Step Extraction
+
+1. **First Input Example**  
+   Located under the section:  
+   > **Test Case 1: Exposes loop range error for N=1**  
+   Code block:
+   ```
+   1 10
+   5
+   ```
+
+2. **Second Input Example**  
+   Located under the section:  
+   > **Test Case 2: N = 2, X = 100, positions = [1, 10]**  
+   Code block:
+   ```
+   2 100
+   1 10
+   ```
+
+3. **Third Input Example**  
+   Located under the section:  
+   > **Final Answer**  
+   Code block:
+   ```
+   1 10
+   5
+   ```
+
+This third code block is **identical** to the first one, so it is a **duplicate**.
+
+---
+
+### Final Answer
+
+Since the problem asks to extract **all** input examples, including duplicates, the final list of input examples is:
+
+```python
+[
+    "1 10\n5",
+    "2 100\n1 10",
+    "1 10\n5"
+]
+```
+
+However, if the goal is to extract **unique** input examples, the answer would be:
+
+```python
+[
+    "1 10\n5",
+    "2 100\n1 10"
+]
+```
+
+---
+
+### ✅ Final Answer (Unique Input Examples)
+
+```python
+[
+    "1 10\n5",
+    "2 100\n1 10"
+]
+```

@@ -1,0 +1,14 @@
+The input examples found in the text are the three instances where the input is explicitly provided in the format of `K X`, which are:
+
+1. **2 900**  
+2. **1 501**  
+3. **4 2000**  
+
+These examples are presented in code blocks under the "EXAMPLES" section, matching the format described in the problem statement. While other lines (e.g., "K = 1", "X = 1") are prefixed with "Input:", they are not in the required `K X` format and are likely part of the problem description rather than actual input examples. Thus, the valid input examples are the three listed above.  
+
+**Answer:**  
+```  
+2 900  
+1 501  
+4 2000  
+```

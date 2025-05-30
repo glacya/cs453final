@@ -1,0 +1,75 @@
+The task is to extract **input examples** from the provided text dump, based on the following criteria:
+
+1. **Code blocks** enclosed in triple backticks (` ``` `) that **look like input examples** (i.e., they follow the format of H W followed by H lines of data).
+2. **Lines or paragraphs** that are **prefixed with "Input:"** (or similar) and may contain input data.
+
+---
+
+### Step-by-Step Analysis
+
+#### 1. **Code Block Under "Test Case 1: Shared Rows in a 2D List"**
+
+This is a **code block** enclosed in triple backticks:
+
+```plaintext
+2 2
+.
+#
+
+#
+#
+```
+
+- It starts with `2 2`, which could represent H and W (height and width).
+- It has 5 lines, but only 2 lines of data (`.`, `#`, `#`, `#`) — this is **not consistent** with the expected format of H W followed by H lines of data.
+- However, **it is a code block** and **looks like an input example** (even if it's malformed), so it **should be extracted**.
+
+#### 2. **Line Prefixed with "input :"**
+
+There is a line in the text dump:
+
+```
+input :     
+```
+```
+2 2
+.
+#
+
+#
+#
+```
+
+- This line is **not** a code block, but it is **prefixed with "input :"**, which is similar to "Input:".
+- The **code block** that follows is **part of the input example**.
+- Since the code block is **already extracted** in the previous step, this is **not a new input example**.
+
+#### 3. **Other Code Blocks in the Text**
+
+Other code blocks in the text (e.g., the "Buggy code" and "Correct code" blocks) are **part of the explanation**, not input examples. They should **not** be extracted.
+
+---
+
+### Final Answer
+
+The only **input example** that meets the criteria is the **code block** under "Test Case 1: Shared Rows in a 2D List".
+
+```plaintext
+2 2
+.
+#
+
+#
+#
+```
+
+✅ **Extracted Input Example:**
+
+```plaintext
+2 2
+.
+#
+
+#
+#
+```

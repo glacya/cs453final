@@ -15,7 +15,6 @@ from pathlib import Path
 from collections import Counter
 import subprocess
 import time
-import threading
 
 POOL_WORKERS = 10
 

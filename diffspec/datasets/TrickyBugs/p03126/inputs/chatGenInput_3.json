@@ -1,0 +1,9 @@
+[
+  "INPUT:\n3 4\n2 1 3\n3 1 2 3\n2 3 2",
+  "INPUT:\n5 5\n4 2 3 4 5\n4 1 3 4 5\n4 1 2 4 5\n4 1 2 3 5\n4 1 2 3 4",
+  "INPUT:\n1 30\n3 5 10 30",
+  "N = 2\nM = 2\nPerson 1: [1, 2]\nPerson 2: [1, 2]",
+  "N = 2\nM = 3\nPerson 1: [1, 2]\nPerson 2: [2, 3]",
+  "N = 3\nM = 3\nPerson 1: [1, 2]\nPerson 2: [2, 3]\nPerson 3: [1, 3]",
+  "N = 3\nM = 3\nPerson 1: [1, 2, 3]\nPerson 2: [1, 2, 3]\nPerson 3: [1, 2, 3]"
+]

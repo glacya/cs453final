@@ -1,0 +1,11 @@
+The input examples provided in the text are:
+
+1. `1 6`  
+2. `12345 678901`
+
+These are the only two instances where the input is explicitly formatted as `N M` and accompanied by an output. Other sections in the text describe examples or explanations but do not represent valid input examples in the required format.
+
+**Answer:**  
+```json
+["1 6", "12345 678901"]
+```

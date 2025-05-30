@@ -1,0 +1,26 @@
+The test cases you've provided are for a simple calculator program that performs addition. Here's a corrected and complete version of the test cases:
+
+---
+
+### **Test Cases for a Simple Calculator Program**
+
+#### **Test Case 1:**
+- **Input:** `2 2`
+- **Expected Output:** `4`
+
+#### **Test Case 2:**
+- **Input:** `3 5`
+- **Expected Output:** `8`
+
+#### **Test Case 3:**
+- **Input:** `10 20`
+- **Expected Output:** `30`
+
+---
+
+### **Explanation:**
+- Each test case consists of two numbers (operands) and the expected result of their addition.
+- The third test case was incomplete in your original input, but the correct expected output for `10 + 20` is **30**.
+
+### **Next Steps:**
+If you're implementing this in code, ensure your program correctly handles integer addition and outputs the expected results for all test cases. Let me know if you need help debugging or formatting your code!

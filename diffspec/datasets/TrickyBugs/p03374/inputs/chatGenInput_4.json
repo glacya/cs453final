@@ -1,0 +1,54 @@
+The input examples found in the text dump are as follows:
+
+1. **First Example (with "INPUT:" prefix):**
+   ```
+   INPUT:
+   3 20
+   2 80
+   9 120
+   16 1
+   OUTPUT:
+   191
+   ```
+
+2. **Second Example (with "INPUT:" prefix):**
+   ```
+   INPUT:
+   3 20
+   2 80
+   9 120
+   16 1
+   OUTPUT:
+   191
+   ```
+
+3. **Third Example (with "INPUT:" prefix):**
+   ```
+   INPUT:
+   3 20
+   2 80
+   9 120
+   16 1
+   OUTPUT:
+   191
+   ```
+
+4. **Test Case's Input (code block):**
+   ```
+   **Input:**
+   ```
+   2 10
+   2 100
+   9 100
+   ```
+
+5. **Final Answer's Code Block (same as test case's input):**
+   ```
+   ✅ **Final Answer:**
+   ```
+   2 10
+   2 100
+   9 100
+   ```
+
+These examples are identified based on the presence of "INPUT:" (uppercase) or "Input:" (lowercase) prefixes, as well as code blocks containing input data. Note that the final answer's code block is identical to the test case's input.

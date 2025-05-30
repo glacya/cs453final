@@ -1,0 +1,71 @@
+To determine how many ways we can arrange a string of length 6 consisting of **3 A's** and **3 other characters (B, N, N)** such that **no two A's are adjacent**, we can use a combinatorial approach that ensures the A's are not placed next to each other.
+
+---
+
+### Step 1: Understand the Structure
+
+We are given:
+- 3 A's (identical)
+- 3 other characters: B, N, N (where N is repeated twice)
+
+So, the total number of characters is 6, and we are to arrange them such that **no two A's are adjacent**.
+
+---
+
+### Step 2: Fix the Positions of Non-A Characters
+
+To ensure that no two A's are adjacent, we can first **place the non-A characters** (B, N, N) in some order, and then **insert the A's into the available gaps** between and around these characters.
+
+The non-A characters are: B, N, N
+
+The number of distinct arrangements of these 3 characters is:
+
+$$
+\frac{3!}{2!} = 3
+$$
+
+These are:
+1. B N N  
+2. N B N  
+3. N N B
+
+---
+
+### Step 3: Determine the Gaps for A's
+
+Once the non-A characters are arranged, we can insert the A's into the **gaps** between and around them.
+
+For any arrangement of 3 non-A characters, there are **4 gaps** available for placing the A's:
+
+- Before the first character
+- Between the first and second
+- Between the second and third
+- After the third character
+
+So, for each arrangement of the non-A characters, we can choose **3 out of the 4 gaps** to place the A's.
+
+The number of ways to choose 3 gaps from 4 is:
+
+$$
+\binom{4}{3} = 4
+$$
+
+---
+
+### Step 4: Multiply the Possibilities
+
+For each of the 3 distinct arrangements of the non-A characters, we have 4 valid ways to place the A's such that no two A's are adjacent.
+
+So, the total number of valid arrangements is:
+
+$$
+3 \times 4 = 12
+$$
+
+---
+
+### ✅ Final Answer
+
+$$
+\boxed{12}
+$$

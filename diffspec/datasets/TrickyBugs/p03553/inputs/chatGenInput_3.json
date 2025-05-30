@@ -1,0 +1,33 @@
+The input examples from the text dump are the code blocks that follow the format of `N` on the first line followed by a list of integers on the second line. These are the valid input examples extracted from the text:
+
+1.  
+```
+3
+-1 100 -1
+```
+
+2.  
+```
+6
+1 2 -6 4 5 3
+```
+
+3.  
+```
+6
+100 -100 -100 -100 100 -100
+```
+
+4.  
+```
+5
+-1 -2 -3 -4 -5
+```
+
+5.  
+```
+2
+-1000 100000
+```
+
+These code blocks represent the input examples as per the specified format.

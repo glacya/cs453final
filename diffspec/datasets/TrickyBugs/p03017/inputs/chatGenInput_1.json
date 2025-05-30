@@ -1,0 +1,104 @@
+To extract all input examples from the provided text, we follow the rules outlined in the system prompt:
+
+- **Input examples** are defined as:
+  - Lines or paragraphs **prefixed with "Input:"** (without code fences).
+  - **Code blocks** (enclosed in triple backticks) that contain input data.
+
+---
+
+### ✅ Step-by-Step Extraction
+
+#### 1. **Examples under "EXAMPLES"**
+These are clearly marked with `INPUT:` and are not in code blocks.
+
+- **Example 1:**
+  ```
+  INPUT:
+  7 1 3 6 7
+  .#..#..
+  ```
+
+- **Example 2:**
+  ```
+  INPUT:
+  7 1 3 7 6
+  .#..#..
+  ```
+
+- **Example 3:**
+  ```
+  INPUT:
+  15 1 3 15 13
+  ...#.#...#.#...
+  ```
+
+#### 2. **Paragraph starting with "Input:"**
+This is a paragraph (not a code block) that starts with "Input:".
+
+- **Example 4:**
+  ```
+  #### **Input:**
+  - `n = 3`
+  - `A = 1`, `B = 2`
+  - `C = 2`, `D = 3`
+  - `s = ".#."` (i.e., positions 1: `.`, 2: `#`, 3: `.`)
+  ```
+
+#### 3. **Code block with "Input:" heading**
+This is a code block with a heading that starts with "Input:".
+
+- **Example 5:**
+  ```
+  **Input:**
+  ```
+  4 1 2 3 4
+  .
+  #..
+  ```
+
+#### 4. **Code block in "Test Case 1" section**
+This is another code block, though the heading is not "Input:", it still contains valid input data.
+
+- **Example 6:**
+  ```
+  input :
+  ```
+  4 1 2 3 4
+  .
+  #..
+  ```
+
+---
+
+### ✅ Final Answer
+
+$$
+\boxed{
+\begin{aligned}
+&\text{1. } INPUT:\\
+&\quad 7\ 1\ 3\ 6\ 7\\
+&\quad .#..#..\\
+&\text{2. } INPUT:\\
+&\quad 7\ 1\ 3\ 7\ 6\\
+&\quad .#..#..\\
+&\text{3. } INPUT:\\
+&\quad 15\ 1\ 3\ 15\ 13\\
+&\quad ...#.#...#.#...\\
+&\text{4. } ####\ **Input:**\\
+&\quad -\ `n = 3`\\
+&\quad -\ `A = 1`, `B = 2`\\
+&\quad -\ `C = 2`, `D = 3`\\
+&\quad -\ `s = ".#."` (i.e., positions 1: `.`, 2: `#`, 3: `.`)\\
+&\text{5. } **Input:**\\
+&\quad ```
+&\quad 4\ 1\ 2\ 3\ 4\\
+&\quad .\\
+&\quad #..\\
+&\text{6. } input :\\
+&\quad ```
+&\quad 4\ 1\ 2\ 3\ 4\\
+&\quad .\\
+&\quad #..
+\end{aligned}
+}
+$$

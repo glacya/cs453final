@@ -1,0 +1,12 @@
+[
+    "1\na 1",
+    "2\nab 1\nba 1",
+    "2\na 1\naa 1",
+    "2\na 1\naa 1",
+    "3\nab 1\nba 1\na 1",
+    "2\nab 1\ncd 1",
+    "2\nabc 1\ncba 1",
+    "2\nabc 1\ncba 1",
+    "2\nabc 1\ncba 1",
+    "2\nabc 1\ncba 1"
+]

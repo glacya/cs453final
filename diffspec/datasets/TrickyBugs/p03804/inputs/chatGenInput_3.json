@@ -1,0 +1,78 @@
+The input examples provided in the text are structured as code blocks, and they represent the data or test cases used in the system. Below is the list of all such code blocks extracted from the text:
+
+---
+
+### **1. Constraints Example 1**
+```plaintext
+3 2
+#.#
+.#.
+#.#
+#.
+.#
+```
+
+---
+
+### **2. Constraints Example 2**
+```plaintext
+3 2
+.#
+.#.
+.#
+.
+.#
+```
+
+---
+
+### **3. Constraints Example 3**
+```plaintext
+4 1
+....
+....
+....
+....
+```
+
+---
+
+### **4. Test Case 1**
+```plaintext
+2 2
+#.
+..
+#.
+..
+```
+
+---
+
+### **5. Test Case 2**
+```plaintext
+3 2
+#.
+#.
+..
+#.
+#.
+```
+
+---
+
+### **6. Test Case 3**
+```plaintext
+3 2
+#.
+..
+#.
+#.
+..
+#.
+..
+```
+
+---
+
+### **Summary**
+These six code blocks represent the input examples used in the system. Each block contains structured data that may be used for testing, validation, or processing within the system. The examples are clearly separated and formatted as code blocks, making them easy to extract and use programmatically.

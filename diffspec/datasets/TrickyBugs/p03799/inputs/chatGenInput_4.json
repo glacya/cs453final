@@ -1,0 +1,43 @@
+To extract the **input examples** from the provided text, we need to identify the parts of the text that represent **input data** in the format expected by the problem. According to the problem description, the input is given in the format:
+
+```
+N M
+```
+
+Where `N` and `M` are integers.
+
+---
+
+### Step-by-Step Extraction:
+
+1. **Identify Input Blocks**:
+   - The text contains two explicit input blocks under the **"EXAMPLES:"** section:
+     - `INPUT: 1 6`
+     - `INPUT: 12345 678901`
+
+   These are clearly formatted as input examples.
+
+2. **Exclude Other Examples**:
+   - There is a section that says:
+     ```
+     Let’s test the code with the example:
+     - `n = 1`, `m = 5`
+     ```
+     This is part of the **explanation** or **example usage**, not an input example in the required format.
+
+   - Another section:
+     ```
+     # Example 1:
+     - `n = 1`, `m = 6`
+     ```
+     This is also part of the **explanation**, not an input example.
+
+---
+
+### Final Answer:
+
+The valid input examples in the required format are:
+
+```json
+["1 6", "12345 678901"]
+```

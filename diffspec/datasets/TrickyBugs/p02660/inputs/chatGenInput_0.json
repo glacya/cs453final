@@ -1,0 +1,33 @@
+The input examples from the text dump, based on the criteria of being either in code fences or lines prefixed by "Input:" (lowercase), are as follows:
+
+1. **Code Block (2):**
+   ```
+   2
+   ```
+
+2. **Code Block (3):**
+   ```
+   3
+   ```
+
+3. **Code Block (5):**
+   ```
+   5
+   ```
+
+4. **Line with "Input:" (lowercase):**
+   ```
+   **Input:** `N = 2`
+   ```
+
+5. **Line with "Input:" (lowercase):**
+   ```
+   **Input:** `N = 3`
+   ```
+
+6. **Line with "Input:" (lowercase):**
+   ```
+   **Input:** `N = 5`
+   ```
+
+**Note:** The examples under the constraints (e.g., `INPUT:`) were not included as they do not match the "Input:" (lowercase) prefix, but they were part of the text dump. If they are to be considered, they would be additional input examples.

@@ -1,0 +1,26 @@
+The input examples in the provided text are the lines that start with "Input:" followed by the input data. These are:
+
+1.  
+```
+INPUT:
+3
+cbaa
+daacc
+acacac
+```
+
+2.  
+```
+INPUT:
+3
+a
+aa
+b
+```
+
+These are the only input examples explicitly formatted as such in the text. Code blocks are not considered input examples in this context. 
+
+**Final Answer:**  
+The input examples are:  
+1. `INPUT:\n3\ncbaa\ndaacc\nacacac`  
+2. `INPUT:\n3\na\naa\nb`

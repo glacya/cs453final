@@ -1,0 +1,210 @@
+<think>
+Okay, let's tackle this problem. The user wants me to parse a text dump and extract all input examples into a JSON list. The instructions are pretty specific, so I need to make sure I follow them carefully.
+
+First, the constraints mention that input examples can be in two forms: either within triple-backtick code fences (which might or might not have "Input:" in them) or as lines/paragraphs starting with "Input:". Also, I need to discard anything that isn't part of an input example.
+
+Looking at the provided text dump, I need to scan through it and find all such input blocks. Let me start by reading through the text.
+
+The text starts with a markdown section explaining the difference between correct and buggy code. Then there are several sections with examples. Let me check for code fences first. 
+
+In the "Test Case to Illustrate the Difference" section, there's a code block with the input example. Wait, the user mentioned that even if the code fences don't have "Input:", they should be considered if they look like input. But in this case, the code block is part of the explanation, but maybe the actual input is in there. Wait, looking at the text dump, there's a section that says:
+
+"### 📌 Final Answer
+
+The test case that highlights the difference between the correct and buggy code is:
+
+```python
+N = 2
+C = 5
+X = [1, 4]
+V = [100, 100]
+```
+
+This test case demonstrates that the correct code computes the net gain as 197, while the buggy code computes it as 198 due to an incorrect addition of the energy cost."
+
+Wait, but the user's text dump includes a code block here. However, the code block here is part of the explanation, not the input example. Wait, but the user's instruction says that code fences are considered input examples if they look like input. But in this case, the code block is part of the explanation, not the actual input. Wait, but maybe the actual input examples are in the code blocks. Let me check the text dump again.
+
+Looking at the text dump, there's a section that says:
+
+"### 📌 Final Answer
+
+The test case that highlights the difference between the correct and buggy code is:
+
+```python
+N = 2
+C = 5
+X = [1, 4]
+V = [100, 100]
+```
+
+This test case demonstrates that the correct code computes the net gain as 197, while the buggy code computes it as 198 due to an incorrect addition of the energy cost."
+
+Wait, but the user's text dump also includes a section labeled "Test Case 1: Correct vs Buggy Code Difference with Left-Right Path" with an input block:
+
+input :     
+```
+2 5
+1 100
+4 100
+```
+
+Ah, here's an input example. The line "input :" followed by a code block. So according to the constraints, even if the code block doesn't have "Input:", if it's a code fence, it's considered an input example. So this code block is an input example.
+
+Additionally, looking at the examples provided in the problem statement, there are several input examples. For example:
+
+INPUT:
+3 20
+2 80
+9 120
+16 1
+
+Another example is:
+
+INPUT:
+3 20
+2 80
+9 1
+16 120
+
+And so on. These are all code blocks with "INPUT:" in them. But according to the constraints, even if the code fences don't have "Input:", they are considered input examples if they look like input. However, in the problem statement's examples, the input examples are in code blocks with "INPUT:".
+
+Wait, the user's instruction says that the parser should recognize triple-backtick code fences whether or not they contain the word "Input:" but it looks like an input. So, if there's a code block that looks like an input, even without "Input:", it's considered an input example.
+
+But in the text dump provided, there's a code block that starts with "input : " followed by the code. So that's a line starting with "input :" and then a code block. According to the constraints, if there's no triple-backtick code fences, recognize lines or paragraphs prefixed by "Input:" even outside fences. So in this case, the line "input :" is part of the text, and then the code block is part of the input example.
+
+Wait, but the user's text dump includes a line "input : " followed by a code block. So that's a line starting with "input :" and then a code block. So according to the constraints, that's an input example. So the code block is part of the input example.
+
+But how to parse this. Let me think. The user's text dump includes:
+
+"Test Case 1: Correct vs Buggy Code Difference with Left-Right Path
+input :     
+```
+2 5
+1 100
+4 100
+```
+
+So the line "input :" is followed by a code block. According to the constraints, if there's no triple-backtick code fences, recognize lines or paragraphs prefixed by "Input:" even outside fences. But in this case, the code block is inside triple-backticks. So according to the first constraint, code fences are considered input examples if they look like input. So the code block here is an input example.
+
+So the code block here is an input example. Also, the problem statement's examples have code blocks with "INPUT:" in them. So those are also input examples.
+
+So the task is to extract all such code blocks and lines starting with "Input:".
+
+Now, looking through the text dump, I need to find all such input examples.
+
+First, the problem statement's examples:
+
+The first example in the problem statement is:
+
+INPUT:
+3 20
+2 80
+9 120
+16 1
+
+Then another example:
+
+INPUT:
+3 20
+2 80
+9 1
+16 120
+
+Another example:
+
+INPUT:
+1 100000000000000
+50000000000000 1
+
+Another example:
+
+INPUT:
+15 10000000000
+400000000 1000000000
+800000000 1000000000
+1900000000 1000000000
+2400000000 1000000000
+2900000000 1000000000
+3300000000 1000000000
+3700000000 1000000000
+3800000000 1000000000
+4000000000 1000000000
+4100000000 1000000000
+5200000000 1000000000
+6600000000 1000000000
+8000000000 1000000000
+9300000000 1000000000
+9700000000 1000000000
+
+These are all code blocks with "INPUT:" in them. So each of these is an input example.
+
+Additionally, in the text dump, there's a section labeled "Test Case 1: Correct vs Buggy Code Difference with Left-Right Path" with an input block:
+
+input :     
+```
+2 5
+1 100
+4 100
+```
+
+So this is a line starting with "input :" followed by a code block. According to the constraints, if there's no triple-backtick code fences, recognize lines or paragraphs prefixed by "Input:" even outside fences. But in this case, the code block is inside triple-backticks. So according to the first constraint, code fences are considered input examples if they look like input. So this code block is an input example.
+
+So the input examples are:
+
+1. The first example in the problem statement's INPUT section.
+2. The second example in the problem statement's INPUT section.
+3. The third example in the problem statement's INPUT section.
+4. The fourth example in the problem statement's INPUT section.
+5. The input block in the "Test Case 1" section.
+
+Wait, but the problem statement's examples are part of the text dump. Let me check the entire text dump again.
+
+The text dump includes the problem statement's examples. For example, the first example is:
+
+INPUT:
+3 20
+2 80
+9 120
+16 1
+
+Then the output is 191.
+
+Similarly, the second example is:
+
+INPUT:
+3 20
+2 80
+9 1
+16 120
+
+Output: 192
+
+Third example:
+
+INPUT:
+1 100000000000000
+50000000000000 1
+
+Output: 0
+
+Fourth example:
+
+INPUT:
+15 10000000000
+400000000 1000000000
+800000000 1000000000
+1900000000 1000000000
+2400000000 1000000000
+2900000000 1000000000
+3300000000 1000000000
+3700000000 1000000000
+3800000000 1000000000
+4000000000 1000000000
+4100000000 1000000000
+5200000000 1000000000
+6600000000 1000000000
+8000000000 1000000000
+9300000000 1000000000
+9700000000 1000000000
+
+Output: 10000000000000000000000000000000

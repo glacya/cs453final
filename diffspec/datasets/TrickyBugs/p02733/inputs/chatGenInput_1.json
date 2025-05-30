@@ -1,0 +1,31 @@
+The input examples from the text dump are:
+
+1.  
+```
+INPUT:
+3 5 4
+11100
+10001
+00111
+```
+
+2.  
+```
+INPUT:
+3 5 8
+11100
+10001
+00111
+```
+
+3.  
+```
+INPUT:
+4 10 4
+1110010010
+1000101110
+0011101001
+1101000111
+```
+
+These examples are extracted because they are prefixed with "INPUT:" and match the expected format of the input examples described in the problem.

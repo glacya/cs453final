@@ -1,0 +1,13 @@
+The input examples provided in the text are the values that follow the lines starting with "Input:" (case-insensitive) or within triple-backtick code fences. Based on the text, the input examples are:
+
+- **24**
+- **123**
+- **456**
+- **8**
+- **9**
+- **10**
+
+These values are extracted from the lines under the "EXAMPLES:" section (with "INPUT:") and the test cases (with "Input:"). The instruction's mention of "Input:" (lowercase) is interpreted as a case-insensitive match to ensure all relevant input examples are captured. 
+
+**Final Answer:**  
+The input examples are: `24`, `123`, `456`, `8`, `9`, and `10`.

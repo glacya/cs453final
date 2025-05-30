@@ -1,0 +1,37 @@
+The input examples from the text dump are as follows:
+
+1. **Problem's Examples (in the text dump):**
+   - 
+     ```
+     INPUT:
+     6
+     1 2 -6 4 5 3
+     ```
+   - 
+     ```
+     INPUT:
+     7
+     -1 2 3 -4 5 6 7
+     ```
+   - 
+     ```
+     INPUT:
+     8
+     1 -2 3 -4 5 -6 7 -8
+     ```
+
+2. **Code Blocks with "input :" (lowercase):**
+   - 
+     ```
+     input :
+     3
+     -1 -2 -3
+     ```
+   - 
+     ```
+     input :
+     4
+     1 2 3 4
+     ```
+
+These examples are extracted based on the criteria provided: code blocks that resemble input (even without "Input:" in the content) and lines/paragraphs prefixed by "Input:" (case-insensitive interpretation).

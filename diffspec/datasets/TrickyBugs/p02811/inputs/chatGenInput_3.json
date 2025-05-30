@@ -1,0 +1,9 @@
+The input examples in the text are the lines enclosed within triple-backticks (code fences) for each test case. These lines represent the input data for the respective test cases. Here are the extracted input examples:
+
+1. `"1 501"`  
+2. `"2 900"`  
+3. `"1 500"`  
+4. `"3 1500"`  
+5. `"1 499"`  
+
+These are the valid input examples based on the provided text and the specified criteria (code fences). Lines prefixed with "INPUT:" in uppercase are not considered input examples under the given constraints.

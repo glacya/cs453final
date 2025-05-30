@@ -1,0 +1,65 @@
+The input examples from the provided text are as follows:
+
+1. **Test Case 1 (Code Block):**
+   ```plaintext
+   N = 4, M = 2
+   A = [
+     "#.#",  # Row 0
+     "..",   # Row 1
+     ".#.",  # Row 2
+     ".."    # Row 3
+   ]
+   B = [
+     "#.",
+     ".#"
+   ]
+   ```
+
+2. **Test Case 2 (Code Block):**
+   ```plaintext
+   N = 3, M = 2
+   A = [
+     "#.#",  # Row 0
+     "..",   # Row 1
+     ".#.",  # Row 2
+   ]
+   B = [
+     "#.",
+     ".#"
+   ]
+   ```
+
+3. **4x2 Grid (Code Block):**
+   ```plaintext
+   4 2
+
+   #.
+   # 
+   .. 
+   .
+   #. 
+   ..
+   ```
+
+4. **Input Example (N=3, M=2):**
+   ```plaintext
+   INPUT:
+   3 2
+   #.#
+   .#.
+   #.#
+   #.
+   .#
+   ```
+
+5. **Input Example (N=4, M=1):**
+   ```plaintext
+   INPUT:
+   4 1
+   ....
+   ....
+   ....
+   ....
+   ```
+
+These examples are extracted based on the criteria that any code block or line starting with "INPUT:" containing structured data is considered an input example.

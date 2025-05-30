@@ -1,0 +1,69 @@
+To extract all input examples from the provided text, we follow the rules outlined in the system prompt:
+
+1. **Code blocks** (triple-backtick fences) are considered input examples, regardless of their content.
+2. **Lines or paragraphs prefixed with "Input:"** are also considered input examples, even if they are not in code blocks.
+
+---
+
+### ✅ Identified Input Examples
+
+#### 1. **Text-based Input Example (not in code block)**
+```
+INPUT:
+atcoderregularcontest
+
+OUTPUT:
+b
+```
+
+#### 2. **Text-based Input Example (not in code block)**
+```
+INPUT:
+abcdefghijklmnopqrstuvwxyz
+
+OUTPUT:
+aa
+```
+
+#### 3. **Text-based Input Example (not in code block)**
+```
+INPUT:
+frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn
+
+OUTPUT:
+aca
+```
+
+#### 4. **Code Block Input Example**
+```
+```plaintext
+Test Case 1:
+Input: bcdefghijklmnopqrstuvwxyz
+Expected Output: a
+
+Test Case 2:
+Input: abcdefghijklmnopqrstuvwxyz
+Expected Output: aa
+```
+```
+
+---
+
+### ✅ Final Answer (as a JSON array of strings)
+
+```json
+[
+  "INPUT:\natcoderregularcontest\n\nOUTPUT:\nb",
+  "INPUT:\nabcdefghijklmnopqrstuvwxyz\n\nOUTPUT:\naa",
+  "INPUT:\nfrqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn\n\nOUTPUT:\naca",
+  "```plaintext\nTest Case 1:\nInput: bcdefghijklmnopqrstuvwxyz\nExpected Output: a\n\nTest Case 2:\nInput: abcdefghijklmnopqrstuvwxyz\nExpected Output: aa\n```"
+]
+```
+
+---
+
+### ✅ Summary
+
+- **Total Input Examples:** 4
+- **Types:** 3 text-based, 1 code block
+- **Each input example is returned as a separate string in the JSON array.**

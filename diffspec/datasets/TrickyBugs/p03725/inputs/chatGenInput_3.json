@@ -1,0 +1,14 @@
+[
+  {
+    "code_block": "3 3 3\n#.#\n#S.\n###"
+  },
+  {
+    "code_block": "3 3 3\n.#\nS."
+  },
+  {
+    "code_block": "3 3 3\nS#"
+  },
+  {
+    "code_block": "7 7 2\n...##\nS###\n.#.##"
+  }
+]

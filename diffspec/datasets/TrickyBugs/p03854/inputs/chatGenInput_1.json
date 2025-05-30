@@ -1,0 +1,11 @@
+{
+  "question": "How many people have seen the movie?",
+  "choices": [
+    "A. 50",
+    "B. 100",
+    "C. 150",
+    "D. 200"
+  ],
+  "answer": "B. 100",
+  "explanation": "The question explicitly states that 100 people have seen the movie."
+}
