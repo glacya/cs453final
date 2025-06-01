@@ -15,14 +15,14 @@ from pathlib import Path
 from collections import Counter
 import subprocess
 import time
+import json
 
 POOL_WORKERS = 10
 
 # Executes program and collects the result.
 # It assumes that input path is "/datasets/TrickyBugs/{pid}/inputs/{input_index}.in".
 
-# TODO: Expand the function so that it can support inputs from both AID and DiffSpec.
-# TODO: Add input validation process
+# AID version
 def execute_problem(problem_dir: Path) -> tuple:
     prob_start_time = time.time()
     print("Executing problem", problem_dir.name)
@@ -53,108 +53,50 @@ def execute_problem(problem_dir: Path) -> tuple:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Compile REF.
-    subprocess.run(f"g++ {ref_src_path} -o {ref_path}; chmod +x {ref_path}", shell=True)
+    subprocess.run(["g++", str(ref_src_path), "-o", str(ref_path)])
+    subprocess.run(["chmod", "+x", str(ref_path)])
 
     # For each input file, run PUT, variants, and reference program.
     # Then, inspect outputs to get statistical information.
     for input_path in input_dir.glob("*.in"):
-        input_name = input_path.stem
+        input_string = None
+
+        with open(input_path, "r") as f:
+            input_string = f.read()
+
         try:
-            # Define output paths.
-            put_output_path = output_dir / f"{input_name}.put.out"
-            ref_output_path = output_dir / f"{input_name}.ref.out"
+            put_output = None
+            ref_output = None
 
             # Run PUT.
             try:
-                subprocess.run(f"python {put_path} < {input_path} > {put_output_path}", shell=True, stderr=subprocess.DEVNULL, timeout=10)
+                put_run = subprocess.run(["python", str(put_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
+                put_output = put_run.stdout.strip()
             except:
-                # log_file.write(f"- PUT failed to run input {input_name}")
                 put_failed += 1
                 continue
 
             # Run reference program.
             try:
-                subprocess.run(f"{ref_path} < {input_path} > {ref_output_path}", shell=True, stderr=subprocess.DEVNULL, timeout=10)
+                ref_run = subprocess.run([str(ref_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
+                ref_output = ref_run.stdout.strip()
             except:
-                # log_file.write(f"- REF failed to run input {input_name}")
                 ref_failed += 1
                 continue
 
             # Run variants.
-            # variant_num = len(list(variant_dir.iterdir()))
+            variant_outputs = []
 
-            variant_output_paths = []
-            # variant_output_paths = [None for _ in range(variant_num)]
-            # thread_handles = []
-
-            # thread_values = {
-            #     "output_dir": output_dir,
-            #     "input_path": input_path,
-            # }
-
-            for i, variant_path in enumerate(variant_dir.iterdir()):
-                # t = threading.Thread(target=variant_input_runner, args=[thread_values, variant_path, variant_output_paths, log_file, i])
-                # t.start()
-                # thread_handles.append(t)
-
-                var_name = variant_path.stem
-
-                variant_output_path = output_dir / f"{input_name}.{var_name}.out"
+            for variant_path in variant_dir.iterdir():
                 try:
-                    result = subprocess.run(f"python {variant_path} < {input_path} > {variant_output_path}", shell=True, stderr=subprocess.DEVNULL, timeout=10)
-
-                    # Take output only if succeeded. Some variants are malformed, and we filter it out.
-                    if result.returncode == 0:
-                        variant_output_paths.append(variant_output_path)
+                    variant_result = subprocess.run(["python", str(variant_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
+                    variant_outputs.append(variant_result.stdout.strip())
                 except:
                     variant_failed += 1
-                    # log_file.write(f"- Variant {var_name} failed to run input {input_name}")
 
-            # Now, check the outputs.
-
-            # PUT(T.in)
-            put_output = None
-
-            # REF(T.in)
-            ref_output = None
 
             # T.out
             variant_final_output = None
-
-            with open(put_output_path, "r") as f:
-                put_output = f.read().rstrip()
-            
-            with open(ref_output_path, "r") as f:
-                ref_output = f.read().rstrip()
-
-
-            # Pick the final output of test case, based on the outputs of variants.
-            # variant_outputs = [None for _ in range(variant_num)]
-            variant_outputs = []
-            # thread_handles = []
-
-            for i, p in enumerate(variant_output_paths):
-                if p is None:
-                    continue
-
-                # t = threading.Thread(target=variant_output_collector, args=[p, put_output, variant_outputs, i])
-                # t.start()
-                # thread_handles.append(t)
-
-                # if p is None:
-                #     continue
-
-                with open(p, "r") as f:
-                    output = f.read().rstrip()
-
-                    # Ignore if the output of variant is equal to the output of PUT.
-                    if output == put_output:
-                        continue
-
-                    variant_outputs.append(output)
-
-            # for t in thread_handles:
-            #     t.join()
 
             # Pick the most frequent one.
             variant_outputs = list(filter(lambda x: x is not None, variant_outputs))
@@ -175,7 +117,7 @@ def execute_problem(problem_dir: Path) -> tuple:
             #   A    A      B       FN (Bug, no detection)
             #   A    B      A       FP (No bug, false detection)
             #   A    B      B       TP (Bug, correctly detected)
-            #   A    B      C       FP (Bug, detected, but the suggested output is wrong. Therefore, false detection)          
+            #   A    B      C       ?? (Bug, detected, but the suggested output is wrong. Therefore, false detection)          
 
             if put_output == variant_final_output:
                 if variant_final_output == ref_output:
@@ -201,6 +143,7 @@ def execute_problem(problem_dir: Path) -> tuple:
 def execute_programs_and_produce_statistics() -> dict:
     base_dir = Path(__file__).resolve().parent
     dataset_dir = base_dir / "datasets/TrickyBugs"
+    begin_time = time.time()
 
     true_positive = 0
     true_negative = 0
@@ -262,6 +205,8 @@ def execute_programs_and_produce_statistics() -> dict:
     if precision > 0 and recall > 0:
         f1_score = 2 / ((1 / precision) + (1 / recall))
 
+    print(f"AID evaluation took {time.time() - begin_time} seconds in total")
+
     return {
         "true_positive": true_positive,
         "true_negative": true_negative,
@@ -275,3 +220,11 @@ def execute_programs_and_produce_statistics() -> dict:
         "recall": recall,
         "f1_score": f1_score
     }
+
+if __name__ == "__main__":
+    aid_statistics = execute_programs_and_produce_statistics()
+
+    with open("aid_evaluation.txt", "w") as f:
+        json.dump(aid_statistics, f, indent=2, ensure_ascii=False)
+
+    print("Done. Evaluation result is written in aid_evaluation.txt.")

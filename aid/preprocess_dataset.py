@@ -82,6 +82,11 @@ def load_original_test_cases():
                 shutil.copy2(test_file, dest_dir / test_file.name)
 
 
+# Copy test inputs used by original AID paper to each problem directory,
+def load_aid_test_cases():
+    pass
+
+
 # AID filtered out some problems from original TrickyBugs/EvalPlus datasets.
 # This file does removing incomplete problem directories.
 # 
