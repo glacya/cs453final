@@ -32,10 +32,12 @@ def execute_problem(problem_dir: Path) -> tuple:
     false_positive = 0
     false_negative = 0
     undetermined = 0
-    variant_failed = 0
-    invalid_input_format = 0
     put_failed = 0
     ref_failed = 0
+    variant_failed = 0
+    invalid_input_format = 0
+    put_variant_different = 0
+    total_inputs = 0
 
     # Define paths.
     input_dir = problem_dir / "inputs"
@@ -47,7 +49,7 @@ def execute_problem(problem_dir: Path) -> tuple:
     # Check if input directory is empty. If empty, skip and report.
     if input_dir.is_dir() and not any(input_dir.iterdir()):
         print(f"- Skipping {problem_dir.name}, input directory empty")
-        return (0, 0, 0, 0, 0, 0, 0, 0, 0)
+        return (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     # Make directory for outputs.
     output_dir = problem_dir / "outputs"
@@ -57,7 +59,7 @@ def execute_problem(problem_dir: Path) -> tuple:
     subprocess.run(f"g++ {ref_src_path} -o {ref_path}; chmod +x {ref_path}", shell=True, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
 
     # Do not produce output files, just take them in memory. File operations are costly.
-    input_list = []
+    input_set = set()
 
     for input_json in input_dir.glob("*.json"):
         content = None
@@ -71,10 +73,11 @@ def execute_problem(problem_dir: Path) -> tuple:
 
 
         for input_data in content:
-            input_list.append(input_data)
+            total_inputs += 1
+            input_set.add(str(input_data).strip())
 
     
-    for input_data in input_list:
+    for input_data in input_set:
         # print(f"--Beginning of input ({problem_dir.stem})--")
         # print(input_data)
         # print("--End of input--")
@@ -163,6 +166,8 @@ def execute_problem(problem_dir: Path) -> tuple:
                 else:
                     false_negative += 1
             else:
+                put_variant_different += 1
+
                 if put_output == ref_output:
                     false_positive += 1
                 elif variant_final_output == ref_output:
@@ -177,7 +182,7 @@ def execute_problem(problem_dir: Path) -> tuple:
 
     print(f"- Problem {problem_dir.name} took {time.time() - prob_start_time} seconds")
 
-    return (true_positive, true_negative, false_positive, false_negative, undetermined, put_failed, ref_failed, variant_failed, invalid_input_format)
+    return (true_positive, true_negative, false_positive, false_negative, undetermined, put_failed, ref_failed, variant_failed, invalid_input_format, put_variant_different, total_inputs)
 
 def execute_programs_and_produce_statistics() -> dict:
     base_dir = Path(__file__).resolve().parent
@@ -193,6 +198,8 @@ def execute_programs_and_produce_statistics() -> dict:
     ref_failed = 0
     variant_failed = 0
     invalid_input_format = 0
+    put_variant_different = 0
+    total_inputs = 0
 
     problem_paths = list(dataset_dir.iterdir())
 
@@ -213,6 +220,8 @@ def execute_programs_and_produce_statistics() -> dict:
                 ref_failed += result[6]
                 variant_failed += result[7]
                 invalid_input_format += result[8]
+                put_variant_different += result[9]
+                total_inputs += result[10]
 
             except Exception as e:
                 print(f"Error processing {path}: {e}")
@@ -234,6 +243,9 @@ def execute_programs_and_produce_statistics() -> dict:
     if precision > 0 and recall > 0:
         f1_score = 2 / ((1 / precision) + (1 / recall))
 
+    ratio_put_var_disagree = put_variant_different / (total_inputs - put_failed - ref_failed)
+    ratio_input_no_error = 1 - (put_failed + ref_failed) / total_inputs
+
     print(f"DiffSpec evaluation took {time.time() - begin_time} seconds in total")
 
     return {
@@ -246,9 +258,13 @@ def execute_programs_and_produce_statistics() -> dict:
         "ref_failed": ref_failed,
         "variant_failed": variant_failed,
         "invalid_input_format": invalid_input_format,
+        "put_variant_different": put_variant_different,
+        "total_inputs": total_inputs,
         "precision": precision,
         "recall": recall,
-        "f1_score": f1_score
+        "f1_score": f1_score,
+        "ratio_put_var_disagree": ratio_put_var_disagree,
+        "ratio_input_no_error": ratio_input_no_error,
     }
 
 
