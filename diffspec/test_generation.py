@@ -77,7 +77,7 @@ def run_diffs(pids, args):
 
         spec = load_file(spec_path).strip()
         buggy_code = load_file(buggy_path)
-        variant_code = load_file(variant_path)
+        variant_code = load_file(varasdfiant_path)
 
         diff_cache = os.path.join(args.output_path, "cache/diffs", f"{subdir}.txt")
         try:

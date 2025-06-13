@@ -1,8 +1,6 @@
 # DiffSpec
 
 ## DiffSpec directory structure
-
-
 - **/bug_categorization**
   - **/algorithmbugcategories.json**: JSON file defining common algorithmic bug patterns. Used to guide test generation with prior bug knowledge.
 
