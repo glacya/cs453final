@@ -1,67 +1,140 @@
 from utils.model_utils import prompt_model
 
-def generate_differences_from_code_snippets(model, problem_name, spec, src_buggy, src_correct, label_buggy, label_correct):
+def generate_differences_from_code_snippets(model, spec, src_buggy, src_correct):
     prompt = f"""
 You are an expert software testing engineer in python.
-Here is a problem specification written in natural language:
 
+You are provided with the relevant code implementing the specification: 
 {spec}
 
-You are provided with two implementations of the same problem.
-One of them is potentially buggy ({label_buggy}) and the other is potentially correct ({label_correct}).
+You have two implementations of that spec:
 
-Implementation ({label_buggy}):
+- Potentially buggy:
 {src_buggy}
 
-Implementation ({label_correct}):
+- Potentially correct:
 {src_correct}
 
-Identify and list the differences between the two code snippets that could indicate potential bugs or logic changes.
-Return only the list of code-level differences that would lead to different behaviors.
+Identify **only** those code-level differences that would lead to different behaviors.  
+Return **exactly** a Markdown list in this form (no extra text, no quotes):
+
+FORMAT:
+```
+- The buggy version {{…}}, while the variant {{…}}
+- The buggy version {{…}}, while the variant {{…}}
+- …
+- The buggy version {{…}}, while the variant {{…}}
+```
+
 """
-    return prompt_model(prompt.strip(), model)
+    return prompt_model(prompt.strip(), model, temperature=0.1)
 
-def generate_test_descriptions_from_bug_code_diff(model, problem_name, spec, code_diff, bug_class, bug_description, label_buggy, label_correct):
+def generate_test_descriptions_from_bug_code_diff(model, spec, code_diff, src_buggy, src_correct):
     prompt = f"""
-You are an expert in software testing in python.
-You are working on the problem '{problem_name}'. Here is its specification:
+You are an expert software testing engineer in python.
 
+Here is the specification of the problem:
 {spec}
 
-You found the following difference in two implementations:
+You are provided with a list of differences in the code implementations for the specification in two different implementations:
 
+- Potentially buggy:
+{src_buggy}
+
+- Potentially correct:
+{src_correct}
+
+- Key differences:
 {code_diff}
 
-This difference may be related to the bug type: '{bug_class}'.
-Bug description: {bug_description}
+And the actual implementation under test:
+{src_buggy}
 
-Your task is to generate natural language test descriptions that would expose the difference in behavior caused by this bug.
-Focus on how the bug violates the specification. Provide only a list of test descriptions.
+Your task is to generate natural language test descriptions that would expose the difference in behavior, especially that can be buggy.
+Make it clear and simple.
+Return **exactly** a Markdown list in this form (no extra text, no quotes):
+
+FORMAT:
+```
+- A test case with {{...}}
+- A test case with {{...}}
+...
+- A test case with {{...}}
+```
+
 """
-    return prompt_model(prompt.strip(), model)
+    return prompt_model(prompt.strip(), model, temperature=0.2, timeout=480.0)
 
-def generate_test_body(model, problem_name, spec, example_tests, nl_test_description):
+def split_spec_by_constraints(spec: str):
+    keyword = "CONSTRAINTS:"
+    index = spec.find(keyword)
+
+    if index == -1:
+        raise ValueError("The keyword 'CONSTRAINTS:' was not found in the spec.")
+
+    explanations = spec[:index].rstrip()
+    constraints_and_examples = spec[index:].lstrip()
+
+    return explanations, constraints_and_examples
+
+def generate_test_body(model, spec, nl_test_description):
+    explanations, constraints_and_examples = split_spec_by_constraints(spec)
     prompt = f"""
-You are an expert test engineer in python.
-The goal is to find differential tests that returns different outputs in different implementations for this problem.
-Here is a problem specification:
+    You are an expert test engineer in python. You usualy generate inputs that match the given constraint and examples as your job.
 
-{spec}
+    The goal is to find test inputs for differential tests that returns different outputs in different implementations for an problem so we can test for nuances in the two implementations based on the natural language specifications. 
 
-Your goal is to generate differential tests so we can test for nuances in the two implementations based on the natural language specifications. 
+    Here is a problem specification:
 
-Here are some examples of existing tests for this problem.
+    {explanations}
 
-{example_tests}
+    Here are the constraints and an examples explaining **THE EXACT FORMAT YOU SHOULD STRICTLY FOLLOW** when generating the test input:
+    {constraints_and_examples}
 
-Here is a description of a test that can result in differential behaviour in the two implementations for the problem.
-{nl_test_description}
+    Here is a  **natural-language description** of the specific differential test we need:
 
-Generate the code for the test in the same format as the example. 
-You are required to strictly follow these instructions when generating the test.
-1. Make sure you only generate one test.
-2. Do not include comments in the same line as code.
-Only generate the test case so it can be directly executed, and comment out any natural language descriptions describing what the test does."
+    {nl_test_description}
 
-"""
-    return prompt_model(prompt.strip(), model)
+    Your test input should follow the below format as a result inside the plaintext. 
+    Only show the input in the ``` ```block after the 'input :' line. STRICTLY FOLLOW THE FORMAT
+
+    FORMAT:
+
+    # Test Case 1: {{brief one-line instruction from the description}}
+    input :     
+    ```
+    {{the raw test input—just lines of values, no variable names or extra text}}
+    ```
+
+    """ 
+    return prompt_model(prompt.strip(), model, temperature=0.05, timeout=600.0)
+
+def generate_parsed_from_body(model, spec, test_body):
+    explanations, constraints_and_examples = split_spec_by_constraints(spec)
+
+    prompt = f"""
+    SYSTEM : You are a precise parser. 
+    Your job is to take an arbitrary blob of text and return only the pieces that represent “input examples.” 
+    You will output a JSON array of strings—each string is one input block. You must filter out anything that isn’t an input.
+
+    Here’s a text dump.  Extract *all* of the input examples into a JSON list.  
+    1. Recognize triple-backtick code fences, whether or not they contain the word “Input:” but it looks like a input.
+    2. If there is no triple-backtick code fences, recognize lines or paragraphs prefixed by “Input:” even outside fences.  
+    3. Discard any code/output/explanation that isn’t clearly part of an input example.  
+
+    Return:
+    [
+    "first input example here…",
+    "second input example here…",
+    …
+    ]
+
+    You can check the constraint and examples how a input should look like from the examples.
+    Constraints and Examples:
+    {constraints_and_examples}
+
+    Text dump:
+    {test_body}
+
+    """
+    return prompt_model(prompt.strip(), model, temperature=0.05)
