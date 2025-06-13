@@ -2,14 +2,6 @@
 # - PUT: Program under test.
 # - REF: Reference solution program. It is considered as ground truth.
 
-# Let newly produced test be T.
-# True positive: PUT(T.in) != T.out && REF(T.in) == T.out
-# False positive: T.in is invalid || PUT(T.in) != T.out && PUT(T.in) == REF(T.in)
-# False negative: PUT(T.in) == T.out && PUT(T.in) != REF(T.in)
-
-# Precision: Among the test cases that reported bugs, how many of them actually catched bugs?
-# Recall: Among the test cases that touched the bug of PUT, how many of them identified the bugs?
-
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from collections import Counter
@@ -26,17 +18,21 @@ POOL_WORKERS = 10
 def execute_problem(problem_dir: Path) -> tuple:
     prob_start_time = time.time()
     print("Executing problem", problem_dir.name)
-
-    true_positive = 0
-    true_negative = 0
-    false_positive = 0
-    false_negative = 0
-    undetermined = 0
-    variant_failed = 0
+    
     put_failed = 0
     ref_failed = 0
-    put_variant_different = 0
-    total_inputs = 0
+    variant_failed = 0
+    execution_failure_inputs = 0
+    total_executed_inputs = 0
+    
+    put_variant0_diverse = 0
+    put_variant0_fail = 0
+    put_variant0_no_effect = 0
+
+    has_diff_and_correct = 0
+    has_diff_and_incorrect = 0
+    no_diff_and_correct = 0
+    no_diff_and_incorrect = 0
 
     # Define paths.
     input_dir = problem_dir / "chat_generated_inputs"
@@ -44,125 +40,165 @@ def execute_problem(problem_dir: Path) -> tuple:
     ref_src_path = problem_dir / "ref.cpp"
     ref_path = problem_dir / "ref"
     variant_dir = problem_dir / "variants"
+    variant0_path = problem_dir / "variants/variant0.py"
 
     # Check if input directory is empty. If empty, skip and report.
     if input_dir.is_dir() and not any(input_dir.iterdir()):
         print(f"- Skipping {problem_dir.name}, input directory empty")
-        return (0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+        return {
+            # How many generated inputs get classified i.e. no error?
+            "put_failed": 0,
+            "ref_failed": 0,
+            "variant_failed": 0,
+            "execution_failure_inputs": 0,
+            "total_executed_inputs": 0,
+            # PUT vs variant0
+            "put_variant0_diverse": 0,
+            "put_variant0_fail": 0,
+            "put_variant0_no_effect": 0,
+            # Diversity-first classification
+            "has_diff_and_correct": 0,
+            "has_diff_and_incorrect": 0,
+            "no_diff_and_correct": 0,
+            "no_diff_and_incorrect": 0,
+        }
 
     # Make directory for outputs.
     output_dir = problem_dir / "outputs"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Compile REF.
-    subprocess.run(["g++", str(ref_src_path), "-o", str(ref_path)])
-    subprocess.run(["chmod", "+x", str(ref_path)])
+    subprocess.run(f"g++ {ref_src_path} -o {ref_path}; chmod +x {ref_path}", shell=True, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
 
-    # For each input file, run PUT, variants, and reference program.
-    # Then, inspect outputs to get statistical information.
-    for input_path in input_dir.glob("*.in"):
-        total_inputs += 1
-        input_string = None
+    for input_file in input_dir.glob("*.in"):
+        total_executed_inputs += 1
+        input_data = None
 
-        with open(input_path, "r") as f:
-            input_string = f.read()
+        with open(input_file, "r") as f:
+            input_data = f.read()
+
+        put_output = None
+        ref_output = None
+        variant0_output = None
+
+        put_failure = False
+        variant0_failure = False
+
+        # Run REF first. REF failure stops computing input immediately.
+        try:
+            ref_run = subprocess.run([str(ref_path)], capture_output=True, text=True, input=input_data, timeout=5, check=True)
+            ref_output = ref_run.stdout.strip()
+
+        except:
+            ref_failed += 1
+            continue
+
+        # Run PUT and variant0.
+        try:
+            put_run = subprocess.run(["python", str(put_path)], capture_output=True, text=True, input=input_data, timeout=5, check=True)
+            put_output = put_run.stdout.strip()
+
+        except:
+            put_failed += 1
+            put_failure = True
 
         try:
-            put_output = None
-            ref_output = None
+            variant0_run = subprocess.run(["python", str(variant0_path)], capture_output=True, text=True, input=input_data, timeout=5, check=True)
+            variant0_output = variant0_run.stdout.strip()
+        except:
+            variant0_failure = True
+        
+        # If both PUT and variant0 failed, mark input as reporting severe failure.
+        # If one of PUT and variant0 failed, mark input as finding diversity.
+        # If outputs of PUT and variant0 are different, mark input as finding diversity.
+        if put_failure and variant0_failure:
+            put_variant0_fail += 1
+        elif put_failure or variant0_failure:
+            put_variant0_diverse += 1
+        elif put_output != variant0_output:
+            put_variant0_diverse += 1
+        else:
+            put_variant0_no_effect += 1
+        
+        # Skip further operation if PUT failed.
+        if put_failure:
+            continue
 
-            # Run PUT.
+        
+        variant_outputs = []
+
+        for variant_path in variant_dir.iterdir():
             try:
-                put_run = subprocess.run(["python", str(put_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
-                put_output = put_run.stdout.strip()
+                variant_result = subprocess.run(["python", str(variant_path)], capture_output=True, text=True, input=input_data, timeout=5, check=True)
+
+                variant_output = variant_result.stdout.strip()
+
+                if variant_output != put_output:
+                    variant_outputs.append(variant_output)
             except:
-                put_failed += 1
-                continue
+                variant_failed += 1
+        
 
-            # Run reference program.
-            try:
-                ref_run = subprocess.run([str(ref_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
-                ref_output = ref_run.stdout.strip()
-            except:
-                ref_failed += 1
-                continue
+        variant_final_output = None
+        variant_outputs = list(filter(lambda x: x is not None, variant_outputs))
+        counter = Counter(variant_outputs)
+        most_frequent = counter.most_common(1)
 
-            # Run variants.
-            variant_outputs = []
+        if most_frequent:
+            variant_final_output = most_frequent[0][0]
+        else:
+            # If no outputs disagreed with the output of PUT, then just use PUT's output.
+            variant_final_output = put_output
 
-            for variant_path in variant_dir.iterdir():
-                try:
-                    variant_result = subprocess.run(["python", str(variant_path)], input=input_string, capture_output=True, text=True, timeout=3, check=True)
-                    variant_outputs.append(variant_result.stdout.strip())
-                except:
-                    variant_failed += 1
+        # Determine the type of test case.
+        # Truth table here:
+        ####################
+        #   put == var      var == ref      Classification
+        #   T               T               No diversity, no bug, no_diff_correct
+        #   T               F               No diversity, had bug, no_diff_incorrect
+        #   F               T               Found diversity, no bug, has_diff_correct
+        #   F               F               Found diversity, had bug, has_diff_incorrect
 
-
-            # T.out
-            variant_final_output = None
-
-            # Pick the most frequent one.
-            variant_outputs = list(filter(lambda x: x is not None, variant_outputs))
-            counter = Counter(variant_outputs)
-            most_frequent = counter.most_common(1)
-
-            if most_frequent:
-                variant_final_output = most_frequent[0][0]
+        if put_output == variant_final_output:
+            if variant_final_output == ref_output:
+                no_diff_and_correct += 1
             else:
-                # If no outputs disagreed with the output of PUT, then just use PUT's output.
-                variant_final_output = put_output
-
-            # Determine the type of test case.
-            # Truth table here:
-            ####################
-            #   put  var    ref     result
-            #   A    A      A       TN (No bug, no detection)
-            #   A    A      B       FN (Bug, no detection)
-            #   A    B      A       FP (No bug, false detection)
-            #   A    B      B       TP (Bug, correctly detected)
-            #   A    B      C       ?? (Bug, detected, but the suggested output is wrong. Therefore, false detection)          
-
-            if put_output == variant_final_output:
-                if variant_final_output == ref_output:
-                    true_negative += 1
-                else:
-                    false_negative += 1
+                no_diff_and_incorrect += 1
+        else:
+            if variant_final_output == ref_output:
+                has_diff_and_correct += 1
             else:
-                put_variant_different += 1
+                has_diff_and_incorrect += 1
 
-                if put_output == ref_output:
-                    false_positive += 1
-                elif variant_final_output == ref_output:
-                    true_positive += 1
-                else:
-                    undetermined += 1
-
-        except Exception as e:
-            print(f"While running problem {problem_dir.name}, an exception occurred:")
-            print(e)
+    execution_failure_inputs = ref_failed + put_failed
 
     print(f"- Problem {problem_dir.name} took {time.time() - prob_start_time} seconds")
 
-    return (true_positive, true_negative, false_positive, false_negative, undetermined, put_failed, ref_failed, variant_failed, put_variant_different, total_inputs)
+    return {
+        # How many generated inputs get classified i.e. no error?
+        "put_failed": put_failed,
+        "ref_failed": ref_failed,
+        "variant_failed": variant_failed,
+        "execution_failure_inputs": execution_failure_inputs,
+        "total_executed_inputs": total_executed_inputs,
+        # PUT vs variant0
+        "put_variant0_diverse": put_variant0_diverse,
+        "put_variant0_fail": put_variant0_fail,
+        "put_variant0_no_effect": put_variant0_no_effect,
+        # Diversity-first classification
+        "has_diff_and_correct": has_diff_and_correct,
+        "has_diff_and_incorrect": has_diff_and_incorrect,
+        "no_diff_and_correct": no_diff_and_correct,
+        "no_diff_and_incorrect": no_diff_and_incorrect,
+    }
 
 def execute_programs_and_produce_statistics() -> dict:
     base_dir = Path(__file__).resolve().parent
     dataset_dir = base_dir / "datasets/TrickyBugs"
     begin_time = time.time()
 
-    true_positive = 0
-    true_negative = 0
-    false_positive = 0
-    false_negative = 0
-    undetermined = 0
-    put_failed = 0
-    ref_failed = 0
-    variant_failed = 0
-    put_variant_different = 0
-    total_inputs = 0
-
-    no_chat_inputs_pid = base_dir / "no_chat_inputs_pid.txt"
-    no_chat_inputs_list = ""
+    result_dict = None
 
     problem_paths = list(dataset_dir.iterdir())
 
@@ -174,67 +210,28 @@ def execute_programs_and_produce_statistics() -> dict:
             try:
                 result = future.result()
                 
-                true_positive += result[0]
-                true_negative += result[1]
-                false_positive += result[2]
-                false_negative += result[3]
-                undetermined += result[4]
-                put_failed += result[5]
-                ref_failed += result[6]
-                variant_failed += result[7]
-                put_variant_different += result[8]
-                total_inputs += result[9]
+                if result_dict is None:
+                    result_dict = result
+                else:
+                    for key in result_dict:
+                        result_dict[key] += result[key]
 
             except Exception as e:
                 print(f"Error processing {path}: {e}")
-
-
-    for problem_dir in dataset_dir.iterdir():
-        input_dir = problem_dir / "chat_generated_inputs"
-        if input_dir.is_dir() and not any(input_dir.iterdir()):
-            no_chat_inputs_list += f"{problem_dir.name}\n"
-
-    if no_chat_inputs_list != "":
-        with open(no_chat_inputs_pid, "w") as f:
-            f.write(no_chat_inputs_list)
-
-    # Precision = (TP) / (TP + FP)
-    # Recall = (TP) / (TP + FN)
-    # F1 = 2 / ((1 / Precision) + (1 / Recall))
-    precision = 0
-    recall = 0
-    f1_score = 0
-
-    if true_positive + false_positive > 0:
-        precision = true_positive / (true_positive + false_positive)
     
-    if true_positive + false_negative > 0:
-        recall = true_positive / (true_positive + false_negative)
+    ratio_input_no_error = 1 - result_dict["execution_failure_inputs"] / result_dict["total_executed_inputs"]
+    ratio_put_variant0_diversity = result_dict["put_variant0_diverse"] / (result_dict["total_executed_inputs"] - result_dict["ref_failed"])
+    ratio_put_variant0_fail = result_dict["put_variant0_fail"] / (result_dict["total_executed_inputs"] - result_dict["ref_failed"])
 
-    if precision > 0 and recall > 0:
-        f1_score = 2 / ((1 / precision) + (1 / recall))
+    result_dict["ratio_input_no_error"] = ratio_input_no_error
+    result_dict["ratio_put_variant0_diversity"] = ratio_put_variant0_diversity
+    result_dict["ratio_put_variant0_fail"] = ratio_put_variant0_fail
 
-    ratio_put_var_disagree = put_variant_different / (total_inputs - put_failed - ref_failed)
-    ratio_input_no_error = 1 - (put_failed + ref_failed) / total_inputs
 
     print(f"AID evaluation took {time.time() - begin_time} seconds in total")
 
-    return {
-        "true_positive": true_positive,
-        "true_negative": true_negative,
-        "false_positive": false_positive,
-        "false_negative": false_negative,
-        "undetermined": undetermined,
-        "put_failed": put_failed,
-        "ref_failed": ref_failed,
-        "variant_failed": variant_failed,
-        "precision": precision,
-        "recall": recall,
-        "f1_score": f1_score,
-        "total_inputs": total_inputs,
-        "ratio_put_var_disagree": ratio_put_var_disagree,
-        "ratio_input_no_error": ratio_input_no_error,
-    }
+    return result_dict
+
 
 if __name__ == "__main__":
     aid_statistics = execute_programs_and_produce_statistics()
